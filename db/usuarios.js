@@ -1,5 +1,3 @@
-// Modulo con toda la informacion de los usuarios 
-
 
 let usuarios = {
     list: [
@@ -10,7 +8,7 @@ let usuarios = {
             fechaDeNacimiento: '22/05/2003',
             nroDeDocumento: '44852963',
             fotoDePerfil: 'images/imageUser.jpg'
-
+            
         },
         {
             email: 'tmendez@udesa.edu.ar',
