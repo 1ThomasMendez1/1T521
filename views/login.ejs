@@ -13,7 +13,7 @@
 			<div class="row align-items-center">
 				<div class="col-5 col-md-2">
 					<a href="index.html" class="main-header_home-link">
-						<img src="./images/logo-mercado-liebre.svg">
+						<img src="../images/logo-mercado-liebre.svg">
 					</a>
 				</div>
 	
@@ -75,11 +75,24 @@
 				<h2 class="products-title">Ingresar</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de login. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos <br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
+			<h2 class="col-12"> 
+				<form action="login.ejs" method="get">
+					<div>
+						<label for="usuario">Usuario:</label>
+						<input type="email" name="email">
+					</div>
+					
+					<div>
+						<label for="password">Contraseña:</label>
+					<input type="password" name="password">
+					</div>
+
+					<div>
+						<label for="recordar">Recordar usuario</label>
+						<input type="checkbox">
+					</div>
+
+				</form>
 			</h2>
 
 
