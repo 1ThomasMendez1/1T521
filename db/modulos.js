@@ -1,12 +1,10 @@
-// Modulo con toda la informacion de los usuarios 
-
 
 let modulos = {
     usuarios: [
         {
             email: 'fvarela@udesa.edu.ar',
             usuario: 'pipevarela22',
-            contraseña: 'udesavarela22',
+            contraseña: 'udesavarela22', 
             fechaDeNacimiento: '22/05/2003',
             nroDeDocumento: '44852963',
             fotoDePerfil: 'images/imageUser.jpg'
@@ -89,8 +87,8 @@ let modulos = {
 
     comentarios: [
         { productos_id: 1, user: 'pipevarela22', contenido: 'Altas zapas amigo', imagen: 'images/imageUser.jpg' },
-        { productos_id: 1, user: 'thomasmendez10', contenido: 'Siguen disponibles?', imagen: 'images/imageThomas.png' },
-        { productos_id: 3, user: 'lolomiranda19', contenido: 'La rompen!!', imagen: 'images/imageMiranda.jp' },
+        { productos_id: 1, user: 'pipevarela22', contenido: 'Siguen disponibles?', imagen: 'images/imageUser.jpg' },
+        { productos_id: 3, user: 'pipevarela22', contenido: 'La rompen!!', imagen: 'images/imageUser.jpg' },
     ]
     
     
@@ -100,7 +98,7 @@ let modulos = {
 
 
 // Exporto el modulo 
-module.exports = usuarios;
+module.exports = modulos;
 
 
 
