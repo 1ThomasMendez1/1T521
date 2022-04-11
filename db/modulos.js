@@ -1,8 +1,20 @@
+// Modulo con toda la informacion de los usuarios 
 
-// Modulo de productos 
 
-let productos = {
-    lista: [
+let modulos = {
+    usuarios: [
+        {
+            email: 'fvarela@udesa.edu.ar',
+            usuario: 'pipevarela22',
+            contraseña: 'udesavarela22',
+            fechaDeNacimiento: '22/05/2003',
+            nroDeDocumento: '44852963',
+            fotoDePerfil: 'images/imageUser.jpg'
+
+        },
+    ],
+
+    productos: [
         {
             id: 0,
             imagen: 'images/airJordan1-1986.jpg',
@@ -73,8 +85,33 @@ let productos = {
             descripcion: 'Nike Blazer Mid 77 SE toma el estilo clásico de Nike Básquetbol. Sus diseños exquisitos de gamuza, el diseño Swoosh retro y el cuello acolchado lo convierten en un calzado básico moderno',
             fechaDeCarga: '2/7/2021'
         }
+    ],
+
+    comentarios: [
+        { productos_id: 1, user: 'pipevarela22', contenido: 'Altas zapas amigo', imagen: 'images/imageUser.jpg' },
+        { productos_id: 1, user: 'thomasmendez10', contenido: 'Siguen disponibles?', imagen: 'images/imageThomas.png' },
+        { productos_id: 3, user: 'lolomiranda19', contenido: 'La rompen!!', imagen: 'images/imageMiranda.jp' },
     ]
+    
+    
+
 }
 
 
-module.exports = productos;
+
+// Exporto el modulo 
+module.exports = usuarios;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
