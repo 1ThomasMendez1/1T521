@@ -3,7 +3,7 @@
 <!-- Include Head -->
 
 <!-- Head -->
-<%- include('./parciales/head') %>
+<%- include('../parciales/head') %>
 <!-- Head -->
 
 <body>
@@ -13,7 +13,7 @@
 			<div class="row align-items-center">
 				<div class="col-5 col-md-2">
 					<a href="index.ejs" class="main-header_home-link">
-						<img src="./images/logo-mercado-liebre.svg">
+						<img src="../images/logo-mercado-liebre.svg">
 					</a>
 				</div>
 	
@@ -76,7 +76,41 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12"> 
-				
+				<form action="register.ejs" method="get">
+					<div class="email">
+						<label for="email">Email:</label>
+						<input type="email" name="email">
+					</div>
+
+					<div class="usuario">
+						<label for="usuario">Nombre de usuario:</label>
+						<input type="text" name="text" >
+					</div>
+
+					<div class="contraseña">
+						<label for="contraseña">Contraseña:</label>
+						<input type="password">
+					
+					</div>
+
+					<div class="nacimiento">
+						<label for="fecha">Fecha de nacimiento:</label>
+						<input type="number">
+					</div>
+
+					<div class="documento">
+						<label for="documento">Numero de documento:</label>
+						<input type="number">
+
+					</div>
+
+					<div class="foto">
+						<label for="foto">Foto de perfil:</label> <input accept="image/jpg, image/jpeg, image/png, image/webp, image/JPG, image/JPEG, image/PNG, image/WEBP" type="file" multiple="" autocomplete="off">
+						
+					</div>
+
+				</form>
+
 			</h2>
 
 
