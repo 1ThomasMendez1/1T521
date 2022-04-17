@@ -132,14 +132,14 @@ hr {
   font-size: 1.5em;
 }
 
-.logout{
+.logout {
   background: transparent;
   border: 0px;
   cursor: pointer;
   font-size: 1em;
 }
 
-.logout:hover{
+.logout:hover {
   color: #1259c3;
 }
 
@@ -260,7 +260,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color:#666666;
+  background-color: #666666;
   padding: 20px 0;
   margin-top: 80px;
 }
@@ -314,7 +314,7 @@ hr {
 .product-detail-info {
   border-right: 1px solid var(--light-gray);
   padding: 15px;
-  height: 100%; 
+  height: 100%;
 }
 
 .product-detail-title {
@@ -332,11 +332,13 @@ hr {
   font-size: 5.5em;
   margin: 10px 0;
 }
-.product-detail .form{
+
+.product-detail .form {
   padding: 0 15px;
   display: flex;
   flex-direction: column;
 }
+
 .small {
   font-size: 1.8em;
   color: var(--green);
@@ -394,33 +396,40 @@ hr {
 .action-button.edit {
   background-color: chocolate;
 }
+
 .action-button.delete {
   background-color: rgb(248, 69, 37);
 }
+
 .comments {
   padding: 30px 15px 15px 0;
 }
-.comments article{
+
+.comments article {
   margin-bottom: 7.5px;
   padding-bottom: 7.5px;
   border-bottom: 1px solid #dcdcdc;
   display: flex;
   justify-content: space-between;
 }
-.comments img{
+
+.comments img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
-.comments .data{
+
+.comments .data {
   width: 85%;
-  
+
 }
-.comments p{
+
+.comments p {
   font-size: 1.5em;
   margin-top: 0;
 }
-.comments .user{
+
+.comments .user {
   font-size: 1.7em;
 }
 
@@ -443,7 +452,7 @@ hr {
   padding: 0 15px;
 }
 
-.error{
+.error {
   color: rgb(209, 0, 0);
   font-size: 1.4em;
 }
@@ -455,22 +464,22 @@ textarea.form-input {
 }
 
 /*====== Profile ======*/
-.info-usuario{
+.info-usuario {
   border-bottom: 1px solid #ccc;
   padding-bottom: 30px;
   font-size: 16px;
 }
 
-.foto-perfil{
+.foto-perfil {
   border-radius: 50%;
 }
 
-.main-title{
+.main-title {
   font-size: 25px;
   margin-bottom: 10px;
 }
 
-.btn{
+.btn {
   background-color: #1259c3;
   padding: 10px 20px;
   border-radius: 4px;
@@ -535,14 +544,161 @@ textarea.form-input {
 
 .footerCss {
   display: flex;
-  justify-content: space-around ;
+  justify-content: space-around;
   background-color: rgb(255, 205, 113);
   margin-top: auto;
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.log {
+  background-image: url("../images/fondo.webp");
+}
+
+.reg {background-image: url("../images/fondo.webp");}
+
 .register-form {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.usuario {
+  margin-bottom: 35px;
+  background-color: lightgrey;
+  padding: 20px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.contraseña {
+  margin-bottom: 35px;
+  background-color: lightgrey;
+  padding: 20px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.checkbox {
+  margin-bottom: 35px;
+  background-color: lightgrey;
+  padding: 20px;
+  border-radius: 20px;
+  width: fit-content;
+  
+}
+
+.products-title {
+  margin-bottom: 35px;
+  background-color: lightgrey;
+  padding: 22px;
+  border-radius: 20px;
+  width: fit-content;
+  font-size: 22px;
+  color: #000000;
+ 
+}
+
+.registro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.usuario {
+  margin-bottom: 35px;
+  background-color: lightgrey;
+  padding: 20px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.contraseña {
+  margin-bottom: 35px;
+  background-color: lightgrey;
+  padding: 20px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.email {
+  margin-bottom: 35px;
+  background-color: lightgrey;
+  padding: 20px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.nacimiento {
+  margin-bottom: 35px;
+  background-color: lightgrey;
+  padding: 20px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.documento {
+   margin-bottom: 35px;
+  background-color: lightgrey;
+  padding: 20px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.foto{
+   margin-bottom: 35px;
+  background-color: lightgrey;
+  padding: 20px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.checkbox{
+  margin-bottom: 35px;
+  background-color: lightgrey;
+  padding: 20px;
+  border-radius: 20px;
+  width: fit-content;
+  
+}
+
+.products-title {
+  margin-bottom: 35px;
+  background-color: lightgrey;
+  padding: 22px;
+  border-radius: 20px;
+  width: fit-content;
+  font-size: 22px;
+  color: #000000;
+ 
+}
+
+.ingresar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.enviar {
+  margin-bottom: 35px;
+  padding: 0px;
+  border-radius: 20px;
+  width: fit-content;
 }

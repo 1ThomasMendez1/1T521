@@ -2,118 +2,156 @@
 <html lang="es">
 <!-- Head -->
 <%- include('./parciales/head') %>
-<!-- Head -->
+	<!-- Head -->
 
-<body>
-	<!-- Header -->
-	<header class="main-header">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-5 col-md-2">
-					<a href="index.html" class="main-header_home-link">
-						<img src="./images/logo-mercado-liebre.svg">
-					</a>
-				</div>
-	
-				<div class="col-7 col-md-6">
-					<form action="" method="GET" class="search-form">
-						<input type="text" name="search" placeholder="Buscar productos, marcas y más"
-							class="search-form_input">
-						<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
-					</form>
-				</div>
-	
-				<div class="col-12 col-md-4">
-					<a class="main-header_credit-link">
-						<i class="fas fa-hand-holding-usd"></i>
-						Todas las opiniones en un solo lugar.
-					</a>
-				</div>
-			</div>
-	
-			<button class="btn-toggle-navbar">
-				<i class="fas fa-bars"></i>
-			</button>
-	
-			<nav class="main-navbar">
-				<ul class="left-navbar">
-					<li><a href="index.html">Todos los productos</a></li>
-					<li><a href="product-add.html">Cargar productos</a></li>
-				</ul>
-	
-				<ul class="right-navbar">
-					<li><a href="profile.html">
-							Nombre del usuario <i class="fas fa-user"></i>
+	<body>
+		<!-- Header -->
+		<header class="main-header">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-5 col-md-2">
+						<a href="index.html" class="main-header_home-link">
+							<img src="./images/logo-mercado-liebre.svg">
 						</a>
-					</li>
-					<li>
-						<form action="" method="post">
-							<button class="logout" type="submit">
-								Cerrar sesión <i class="fas fa-sign-in-alt"></i>
-							</button>
+					</div>
+
+					<div class="col-7 col-md-6">
+						<form action="" method="GET" class="search-form">
+							<input type="text" name="search" placeholder="Buscar productos, marcas y más"
+								class="search-form_input">
+							<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
 						</form>
-					</li>
-					<!-- Solo deslogueado <li>
+					</div>
+
+					<div class="col-12 col-md-4">
+						<a class="main-header_credit-link">
+							<i class="fas fa-hand-holding-usd"></i>
+							Todas las opiniones en un solo lugar.
+						</a>
+					</div>
+				</div>
+
+				<button class="btn-toggle-navbar">
+					<i class="fas fa-bars"></i>
+				</button>
+
+				<nav class="main-navbar">
+					<ul class="left-navbar">
+						<li><a href="index.html">Todos los productos</a></li>
+						<li><a href="product-add.html">Cargar productos</a></li>
+					</ul>
+
+					<ul class="right-navbar">
+						<li><a href="profile.html">
+								Nombre del usuario <i class="fas fa-user"></i>
+							</a>
+						</li>
+						<li>
+							<form action="" method="post">
+								<button class="logout" type="submit">
+									Cerrar sesión <i class="fas fa-sign-in-alt"></i>
+								</button>
+							</form>
+						</li>
+						<!-- Solo deslogueado <li>
 								<a href="register.html">Creá tu cuenta <i class="far fa-address-card"></i>
 								</a>
 							</li>
 							<li>
 								<a href="login.html">Ingresá <i class="fas fa-sign-in-alt"></i></a>
 							</li> -->
-				</ul>
-			</nav>
-		</div>
-	</header>
-	<!-- /Header -->
-
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Editar mi perfil</h2>
+					</ul>
+				</nav>
 			</div>
-			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de edición de datos del perfil de usuario. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos deñ usuario<br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
-			</h2>
+		</header>
+		<!-- /Header -->
 
-
-	<!-- footer -->
-	<footer class="main-footer">
-		<div class="container">
+		<!-- Novedades -->
+		<div class="container products-wrapper">
 			<div class="row">
-				<div class="col-12 col-lg-4">
-					<article class="footer-data">
-						<i class="fas fa-credit-card"></i>
-						<h2>Pagá con tarjeta o en efectivo</h2>
-						<p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de pago.
-							¡Y
-							siempre es seguro!</p>
-					</article>
+				<div class="col-12">
+					<h2 class="products-title">Editar mi perfil</h2>
 				</div>
-				<div class="col-12 col-lg-4">
-					<article class="footer-data">
-						<i class="fas fa-gift"></i>
-						<h2>Envío gratis desde $ 1.999</h2>
-						<p>Solo por estar registrado en Mercado Liebre tenés envíos gratis en miles de productos. Es un
-							beneficio de Mercado Puntos.</p>
-					</article>
-				</div>
-				<div class="col-12 col-lg-4">
-					<article class="footer-data">
-						<i class="fas fa-user-shield"></i>
-						<h2>Seguridad, de principio a fin</h2>
-						<p>¿No te gusta? ¡Devolvelo! En Mercado Liebre, no hay nada que no puedas hacer, porque estás
-							siempre protegido.</p>
-					</article>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- /footer -->
-</body>
+				<!-- Show the "ultimos" products -->
+				<h2 class="col-12">
+					<form action="" method="get">
+						<article class="email">
+							<label for="email">Email:</label>
+							<input value="<%=users[0].emailDelUsuario%>" type="email" name="email">
+						</article>
+
+						<article class="usuario">
+							<label for="usuario">Nombre de usuario:</label>
+							<input value="<%=%>" type="text" name="text">
+						</article>
+
+						<article class="contraseña">
+							<label for="contraseña">Contraseña:</label>
+							<input value="<%=%>" type="password">
+
+						</article>
+
+						<article class="nacimiento">
+							<label for="fecha">Fecha de nacimiento:</label>
+							<input value="<%=%>" type="number">
+						</article>
+
+						<article class="documento">
+							<label for="documento">Numero de documento:</label>
+							<input value="<%=%>" type="number">
+
+						</article>
+
+						<article class="foto">
+							<label for="foto">Foto de perfil:</label> <input
+								accept="image/jpg, image/jpeg, image/png, image/webp, image/JPG, image/JPEG, image/PNG, image/WEBP"
+								type="file" multiple="" autocomplete="off" value="<%=%>">
+								</article>
+
+							<label for="enviar">Ingresar a mi usuario</label>
+							<input class="form-input " type="submit" value="Enviar">
+
+						</article>
+					</form>
+				</h2>
+
+
+				<!-- footer -->
+				<footer class="main-footer">
+					<div class="container">
+						<div class="row">
+							<div class="col-12 col-lg-4">
+								<article class="footer-data">
+									<i class="fas fa-credit-card"></i>
+									<h2>Pagá con tarjeta o en efectivo</h2>
+									<p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en
+										puntos de pago.
+										¡Y
+										siempre es seguro!</p>
+								</article>
+							</div>
+							<div class="col-12 col-lg-4">
+								<article class="footer-data">
+									<i class="fas fa-gift"></i>
+									<h2>Envío gratis desde $ 1.999</h2>
+									<p>Solo por estar registrado en Mercado Liebre tenés envíos gratis en miles de
+										productos. Es un
+										beneficio de Mercado Puntos.</p>
+								</article>
+							</div>
+							<div class="col-12 col-lg-4">
+								<article class="footer-data">
+									<i class="fas fa-user-shield"></i>
+									<h2>Seguridad, de principio a fin</h2>
+									<p>¿No te gusta? ¡Devolvelo! En Mercado Liebre, no hay nada que no puedas hacer,
+										porque estás
+										siempre protegido.</p>
+								</article>
+							</div>
+						</div>
+					</div>
+				</footer>
+				<!-- /footer -->
+	</body>
 
 </html>
