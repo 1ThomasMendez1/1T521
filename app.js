@@ -8,6 +8,7 @@ var logger = require('morgan');
 const indexRouter = require('./routes/index.js')
 const usersRouter = require('./routes/users') //aqui requiero  el archivo de ruteo que se va a encargar
 // de manejar los recurso solicitados posteriormente
+const productsRouter =require('./routes/products')
 var app = express();
 
 // view engine setup
@@ -22,7 +23,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter)
 app.use('/users', usersRouter) //cuando se solicite cualquier recurso, el mismo va a ser atendido por el modulo creado
-//metodo use que pertenece a express --> en app.js van unicamente los prefijos 
+//metodo use que pertenece a express --> en app.js van unicamente los prefijos. 
+
+//el metodo use() recibe dos parametros, siendo el primero un string que seria el nombre del recurso. 
+// y el segundo será el nombre de la constante en la que almacenemos el modulo del recurso
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
