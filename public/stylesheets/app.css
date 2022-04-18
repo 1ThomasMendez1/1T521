@@ -702,3 +702,24 @@ textarea.form-input {
   border-radius: 20px;
   width: fit-content;
 }
+
+.product-add {
+  margin: 40px;
+  padding: 30px;
+  width: fit-content;
+  border-radius: 15px;
+  background-color: lightgray;
+
+  
+}
+
+.p-add {
+  background-image: url(../images/products/superlfy.jpg);
+}
+
+.comentarios {
+  margin: 40px;
+  font-size: 20px;
+}
+
+

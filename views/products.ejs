@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- Head -->
+<%- include('./parciales/head') %>
+	<!-- Head -->
+
+	<body>
+		<!-- Header -->
+		<%- include('./parciales/headerLog') %> 
+			<!-- /Header -->
+
+			<!-- product detail -->
+
+			<div class="container products-wrapper">
+				<div class="d-flex align-items-center">
+					<h2 class="products-title">Air Jordan DNA</h2>
+				</div>
+				<a href="/products/product-add">
+					<p class="buy-now-button">Agregar producto</p>
+				</a>
+
+
+				<div class="product-detail">
+					<div class="row">
+						<article class="col-12 col-lg-8 product-detail-info">
+							<img src="../images/products/airJordanDNA.jpg" alt="" class="product-detail-img">
+							<p class="product-detail-description">
+								Air Jordan DNA</p>
+						</article>
+
+						<article class="comentarios">
+							<h3>Comentarios</h3>
+							<p class="comment"><%=listaComentarios[0].user%>: <%= listaComentarios[0].contenido%></p>
+							<p class="comment"><%=listaComentarios[1].user%>: <%= listaComentarios[1].contenido%></p>
+						</article>
+
+						<!-- TODAVIA NO
+						<form class="form" action="" method="POST">
+						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+					</form> -->
+						<hr>
+					</div>
+				</div>
+			</div>
+			
+			<!-- /product detail -->
+
+			<!-- footer -->
+			<%- include('./parciales/footer') %>
+				<!-- /footer -->
+
+	</body>
+
+	</html>
