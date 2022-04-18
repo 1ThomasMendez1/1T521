@@ -37,12 +37,12 @@
 
 				<nav class="main-navbar">
 					<ul class="left-navbar">
-						<li><a href="index.html">Todos los productos</a></li>
-						<li><a href="product-add.html">Cargar productos</a></li>
+						<li><a href="/">Todos los productos</a></li>
+						<li><a href="/products/add">Cargar productos</a></li>
 					</ul>
 
 					<ul class="right-navbar">
-						<li><a href="profile.html">
+						<li><a href="/users/profile">
 								Nombre del usuario <i class="fas fa-user"></i>
 							</a>
 						</li>
@@ -82,30 +82,28 @@
 
 						<article class="usuario">
 							<label for="usuario">Nombre de usuario:</label>
-							<input value="<%=%>" type="text" name="text">
+							<input value="<%=users[0].nombreDelUsuario%>" type="text" name="usuario">
 						</article>
 
 						<article class="contraseña">
 							<label for="contraseña">Contraseña:</label>
-							<input value="<%=%>" type="password">
-
+							<input value="<%=users[0].contraseñaDelUsuario%>" type="contraseña" name="">
 						</article>
 
 						<article class="nacimiento">
 							<label for="fecha">Fecha de nacimiento:</label>
-							<input value="<%=%>" type="number">
+							<input value="<%=users[0].nacimientoDelUsuario%>" type="number" name="fechaNacimiento">
 						</article>
 
 						<article class="documento">
 							<label for="documento">Numero de documento:</label>
-							<input value="<%=%>" type="number">
-
+							<input value="<%=users[0].documentoDelUsuario%>" type="number" name="nroDocumento">
 						</article>
 
 						<article class="foto">
 							<label for="foto">Foto de perfil:</label> <input
 								accept="image/jpg, image/jpeg, image/png, image/webp, image/JPG, image/JPEG, image/PNG, image/WEBP"
-								type="file" multiple="" autocomplete="off" value="<%=%>">
+								type="file" multiple="" autocomplete="off" value="<%=users[0].fotoDelUsuario%>" name="fotoperfil">
 								</article>
 
 							<label for="enviar">Ingresar a mi usuario</label>
