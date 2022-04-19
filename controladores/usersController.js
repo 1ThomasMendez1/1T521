@@ -30,7 +30,13 @@ const usersController = {
             usuario : modulos.usuarios,
             producto : modulos.productos
          })
-    }
+    },
+
+    productAdd: function (req, res) {
+        res.render('product-add', {
+          usuario : modulos.usuarios
+        })
+    },
 };
 
 

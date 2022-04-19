@@ -6,14 +6,14 @@ let modulos = {
             contraseña: 'udesavarela22', 
             fechaDeNacimiento: '22/05/2003',
             nroDeDocumento: '44852963',
-            fotoDePerfil: 'images/imageUser.jpg'
+            fotoDePerfil: 'images/users/imageUser.jpg'
 
         },
 
     productos: [
         {
             id: 1,
-            imagen: 'images/airJordan1-1986.jpg',
+            imagen: 'images/products/airJordan1-1986.jpg',
             nombreDelProducto: 'Air Jordan 1',
             descripcion: 'El primer modelo de la colección y seguramente el más popular. Llevaron el sobrenombre de «Notorious» y convirtieron a Michael Jordan en «Rookie of the Year',
             fechaDeCarga: '22/05/2021'

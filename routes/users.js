@@ -9,6 +9,7 @@ router.get('/', usersController.profile);
 router.get('/register', usersController.register);  //router es la variable que almacena la ejecucion y get el metodo http
 router.get('/login', usersController.login); // (path)dentro del parentesis encontramos un string y hace referencia a la ruta en si misma (url que llega por peticion)
 router.get('/profile-edit', usersController.profileEdit);
+router.get('/product-add', usersController.productAdd)
 
 module.exports = router; // exportamos  
 
