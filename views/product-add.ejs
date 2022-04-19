@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Head -->
-<%- include('./parciales/head') %>
+<%- include('parciales/head') %>
 	<!-- Head -->
 
 	<body class="p-add">
 		<!-- Header -->
-		<%- include('./parciales/headerLog') %> 
+		<%- include('parciales/header') %>
 		<!-- /Header -->
 
 		<!-- Novedades -->
 		<section class="product-add">
-			<form method="get" name="form-register">
+			<form action="/usuario" method="get" name="form-register">
 				<input class="form-input" type="text" name="Nombre del productos" placeholder="Nombre del producto:">
 				<input class="form-input" type="text" name="Descripcion" placeholder="Descripcion:">
 				<input class="form-input" type="date" name="Fecha" placeholder="Ingrese una fecha:">
@@ -23,7 +23,7 @@
 
 
 		<!-- footer -->
-		<%- include('./parciales/footer') %> 
+		<%- include('parciales/footer') %> 
 		<!-- /footer -->
 	</body>
 
