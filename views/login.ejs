@@ -8,47 +8,45 @@
 
 	<body class="log">
 		<!-- Header -->
-		<%- include('./parciales/header') %> 
-		<!-- /Header -->
+		<%- include('./parciales/header') %>
+			<!-- /Header -->
 
-		<!-- Novedades -->
-		<div class="container products-wrapper">
-			<div class="row">
-				<section class="caja-ingresar">
-					<article class="ingresar">
-						<h1 class="products-title"> <i class="fas fa-sign-in-alt"></i>    Ingresar    <i class="fas fa-sign-in-alt"></i></h1>
+			<main>
 
-						<!-- Show the "ultimos" products -->
-						<h2 class="col-12">
-							<form action="/" method="get" class="login-form">
+				<% if(locals.erroresLogin){ %>
+					<p class="mensajeError" style="color: red;">
+						<%= erroresLogin.message %>
+					</p>
+					<% } %>
+
+						<section class="login-section">
+							<form class="login-form" action="/users/login" method="POST">
+								<article class="title">Login</article>
 								<article class="usuario">
-									<label for="usuario">Usuario:</label>
-									<input type="email" name="email">
+									<input id="place-holder" class="input" type="email" name="email" placeholder="Usuario" />
 								</article>
 
 								<article class="contraseña">
-									<label for="password">Contraseña:</label>
-									<input type="password" name="password">
+									<input id="place-holder" class="input" type="password" name="password"
+										placeholder="Clave" />
 								</article>
-
-								<article class="checkbox">
-									<label for="recordar">Recordar usuario </label>
-									<input type="checkbox">
+								<article class="input-container ic1 checkbox">
+									<label for="remember">Recordarme</label>
+									<input id="remember" class="input" type="checkbox" name="remember" />
 								</article>
-
-								<article class="enviar">
-									<input class="form-input " type="submit" value="Log in">
-								</article>
-
+								<button type="text" class="submit">submit</button>
 							</form>
-						</h2>
-					</article>
-				</section>
+
+						</section>
+
+
+						</section>
+			</main>
 
 
 
-				<!-- footer -->
-				<%- include('./parciales/footer') %> 
+			<!-- footer -->
+			<%- include('./parciales/footer') %>
 				<!-- /footer -->
 	</body>
 
