@@ -5,9 +5,9 @@ let usersController = require('../controladores/usersController'); //requiero el
 
 
 //SUFIJOS
+router.get('/', usersController.profile);
 router.get('/register', usersController.register);  //router es la variable que almacena la ejecucion y get el metodo http
 router.get('/login', usersController.login); // (path)dentro del parentesis encontramos un string y hace referencia a la ruta en si misma (url que llega por peticion)
-router.get('/profile', usersController.profile) //separado por coma encontramos el handler, que se encargara de tomar acción cuando se acceda a la ruta definida.
 router.get('/profile-edit', usersController.profileEdit);
 
 module.exports = router; // exportamos  

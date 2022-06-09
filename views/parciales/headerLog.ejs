@@ -1,54 +1,47 @@
-<header class="main-header">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-5 col-md-2">
-                <a href="/" class="main-header_home-link">
-                    <img src="/images/logo-mercado-liebre.png">
+<div class="flexDeNavegador">
+    <h1 class="logoPagina">
+        <a href="/loged" class="main-header_home-link">
+            <img src="/images/logo-mercado-liebre.png">
+    </h1>
+    <div class="flexDeNavegadorChico" id="">
+        <form class="" action="/productos/search-results">
+            <input class="" type="search" placeholder="Buscar productos marcas y más.." aria-label="Search">
+            <button class="" type="submit">Search</button>
+        </form>
+        <ul class="linksNav" type="none">
+            <li>
+                <a class="logoUsuario" aria-current="page" href="/usuario">
+                    <span class="material-icons">&#Xe7ff;</span>: <%= usuario.usuario %>
                 </a>
-            </div>
-
-            <div class="col-7 col-md-6">
-                <form action="search-results.html" method="GET" class="search-form">
-                    <input type="text" name="search" placeholder="Buscar productos, marcas y más" class="search-form_input">
-                    <button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
-                </form>
-            </div>
-
-            <div class="col-12 col-md-4">
-                <a class="main-header_credit-link">
-                    <i class="fas fa-hand-holding-usd"></i>
-                    Todas las opiniones en un solo lugar.
+            </li>
+            <li>
+                <a class="logoUsuario" aria-current="page" href="/usuario/profile-edit">
+                    <span class="material-icons">&#Xe3c9;</span>EDITAR PERFIL
                 </a>
-            </div>
-        </div>
+            </li>
+            
+        </ul>
+        <ul class="linksNav" type="none">
+            <li>
+                <a class="logoUsuario" aria-current="page" href="/products">
+                    <span class="material-icons">&#Xe1a1;</span>TODOS LOS PRODUCTOS
+                </a>
+            </li> 
+            <li>
+                <a class="logoUsuario" aria-current="page" href="/products/product-add">
+                    <span class="material-icons">&#Xe147;</span>AGREGAR PRODUCTOS
+                </a>
+            </li>              
+            
+        </ul>
+        <ul class="linksNav" type="none">
+            <li>
+                <a class="logoUsuario" aria-current="page" href="/">
+                    <span class="material-icons">&#Xe9ba;</span>CERRAR SESIÓN
+                </a>
+            </li>         
+            
+        </ul>
 
-        <button class="btn-toggle-navbar">
-            <i class="fas fa-bars"></i>
-        </button>
-
-        <nav class="main-navbar">
-            <ul class="left-navbar">
-                <li><a href="/">Todos los productos</a></li>
-                <!-- solo logueado <li><a href="">Cargar productos</a></li> -->
-            </ul>
-
-            <ul class="right-navbar">
-                 <li><a href="/profile"> <%=listaUsuarios[0].email%> <i class="fas fa-user"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="logoUsuario" aria-current="page" href="/users/login">
-                        Cerrar sesión <i class="fas fa-sign-in-alt"></i>
-                    </a>
-                </li>
-                <!-- <li>
-                    <a href="/users/register">Creá tu cuenta <i class="far fa-address-card"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="/users/login">Ingresá <i class="fas fa-sign-in-alt"></i></a>
-                </li>-->
-            </ul>
-        </nav>
     </div>
-</header>
+</div>

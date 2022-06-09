@@ -12,18 +12,24 @@ const usersController = {
     },
 
     login: function (req, res) {
-        return res.render('login', {
-            listaUsuarios: modulos.usuarios
-        })
-    },
+        return res.render('login') 
+        },
+    
     profile: function (req, res) {
         res.render('profile', {  
-            listaUsuarios: modulos.usuarios, 
-            listaProductos: modulos.productos, 
-            listaComentarios: modulos.comentarios })
+            titulo: modulos.usuarios,
+            img : modulos.usuarios, 
+            usuario : modulos.usuarios,
+            producto : modulos.productos
+        })
     },
     profileEdit: function (req, res) {
-        res.render('profile-edit', { listaUsuarios: modulos.usuario })
+        res.render('profile-edit', { 
+            info : modulos.usuario,
+            img : modulos.usuarios,
+            usuario : modulos.usuarios,
+            producto : modulos.productos
+         })
     }
 };
 
