@@ -4,6 +4,22 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+// Acá declaro session
+/* 
+app.use(function(req, res, next){
+  res.locals.usuarioLogueado={
+    nombreDelUsuario:''
+  }
+  return next();
+})
+/* 
+res.cookie()
+*/
+
+/* 
+const multer = require('multer');
+const path = require('path');
+*/
 
 const indexRouter = require('./routes/index.js')
 const usersRouter = require('./routes/users') //aqui requiero  el archivo de ruteo que se va a encargar
@@ -13,12 +29,17 @@ const productsRouter =require('./routes/products');
 const productsControllers = require('./controladores/productsControllers')
 
 var app = express();
-
-
+const session = require('express-session');
+app.use(session({
+  secret:"MyApp",
+  resave: false,
+  saveUninitialized:true
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 
 app.use(logger('dev'));
 app.use(express.json());

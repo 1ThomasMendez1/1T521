@@ -566,6 +566,7 @@ textarea.form-input {
   font-size: large;
   display: flex;
   justify-content: center;
+
 }
 .login-form {
   display: flex;
@@ -573,57 +574,45 @@ textarea.form-input {
   align-items: center;
   justify-content: center;
   background-color: rgb(255, 200, 0);
-  border-radius: 20px;
-  width: 360px;
+  border-radius: 5px;
+  width: fit-content;
   margin-top: 50px;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .title {
   margin-bottom: 35px;
   background-color: lightgrey;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 
-
-
-.usuario {
+.article-login {
   margin-bottom: 35px;
   background-color: lightgrey;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 5px;
   width: fit-content;
 }
 
 #place-holder {
   font-size: medium;
-
-}
-
-
-.contraseña {
-  margin-bottom: 35px;
-  background-color: lightgrey;
-  padding: 20px;
-  border-radius: 20px;
-  width: fit-content;
-}
-
-.checkbox {
-  margin-bottom: 35px;
-  background-color: lightgrey;
-  padding: 20px;
-  border-radius: 20px;
-  width: fit-content;
   
+}
+
+.remember {
+  border-radius: 5px;
+  background-color: lightgray;
+  padding: 15px;
+  margin-bottom: 20px;
 }
 
 .products-title {
   margin-bottom: 35px;
   background-color: lightgrey;
   padding: 22px;
-  border-radius: 20px;
+  border-radius: 5px;
   width: fit-content;
   font-size: 22px;
   color: #000000;
@@ -745,4 +734,20 @@ textarea.form-input {
   font-size: 20px;
 }
 
+
+.flexDeNavegadorChico {
+
+  display: flex;
+  align-items: center;
+
+}
+
+.linksNav {
+  display: flex;
+  justify-content: space-around;
+  text-decoration: none;
+  font-size: 19px;
+
+
+}
 

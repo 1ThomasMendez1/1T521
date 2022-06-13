@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('parciales/head')%>
+
+    <body>
+        <nav>
+            <%- include('parciales/headerLog') %>
+        </nav>
+
+        <h2>¿Qué producto te gustaría ver hoy <%= usuario.name %>?</h2>
+
+        <h3>Tus contactos leyeron recientemte..</h3>
+
+        <section class="primerasection" >
+            
+            <% for(let i=0; i<6; i+=2){ %>
+                <article class="segundaSection">
+                <h4 class= >
+                    <%= titulo[i].nombreDelProducto %>
+                </h4>
+                <h4> Género: <%= descripcion[i].descripcion %> </h4>
+                <img class="imagen" src="<%= img[i].imagen %> " alt="">
+                </h4>
+                <h4> <%= comentador[i].user %> comento:  <%= comentador[i].contenido %></h4>
+            </article>
+                <%}%>
+                
+            </section>
+
+            <h3>Aún no leiste</h3>
+
+            <section class="primerasection" >
+                    
+                <% for(let i=1; i<10; i+=3){ %>
+                    <article class="segundaSection" >
+                    <h4 class=tituoloLibro >
+                        <%= titulo[i].nombreDelProducto %>
+                    </h4>
+                    <h4> Género: <%= descripcion[i].descripcion %> </h4>
+                    <img class="imagen" src="<%= img[i].image %> " alt="">
+                    </h4>
+                    <h4><%= comentador[i].user%> comento: <%= comentario[i].contenido %>  </h4>
+                </article>
+                    <%}%>
+            
+        </section>
+
+        <div class="centrado">
+            <%- include('parciales/footer')%>
+        </div>
+
+    </body>
+
+</html>

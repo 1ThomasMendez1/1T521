@@ -1,14 +1,21 @@
-//esta es el archivo de rutas de usuarios
-const express = require('express'); //realizo un require del modulo express
-const router = express.Router(); //variable que guarda la ejecución del método router de express
-let usersController = require('../controladores/usersController'); //requiero el controlador de usuario
+
+const express = require('express');
+const router = express.Router(); 
+let usersController = require('../controladores/usersController'); 
 
 
 //SUFIJOS
+
 router.get('/register', usersController.register);  //router es la variable que almacena la ejecucion y get el metodo http
-router.get('/login', usersController.login); // (path)dentro del parentesis encontramos un string y hace referencia a la ruta en si misma (url que llega por peticion)
-router.get('/profile', usersController.profile) //separado por coma encontramos el handler, que se encargara de tomar acción cuando se acceda a la ruta definida.
+router.post('/register', usersController.procesarRegister);
+router.get('/login', usersController.login);
+router.post('/login',usersController.procesarLogin);
+
+
+// (path)dentro del parentesis encontramos un string y hace referencia a la ruta en si misma (url que llega por peticion)
+router.get('/', usersController.profile);
 router.get('/profile-edit', usersController.profileEdit);
+router.get('/product-add', usersController.productAdd)
 
 module.exports = router; // exportamos  
 

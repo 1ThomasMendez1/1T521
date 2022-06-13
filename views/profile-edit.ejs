@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Head -->
-<%- include('./parciales/head') %>
+<%- include('parciales/head') %>
 	<!-- Head -->
 
 	<body>
 		<!-- Header -->
-		<%- include('./parciales/headerLog') %>
+		<%- include('parciales/headerLog') %>
 		<!-- /Header -->
 
 		<!-- Novedades -->
@@ -20,33 +20,33 @@
 					<form action="" method="get">
 						<article class="email">
 							<label for="email">Email:</label>
-							<input value="<%=modulos.%>" type="email" name="email">
+							<input placeholder="<%=usuario.email%>" type="email" name="email">
 						</article>
 
 						<article class="usuario">
 							<label for="usuario">Nombre de usuario:</label>
-							<input value="<%=users[0].nombreDelUsuario%>" type="text" name="usuario">
+							<input placeholder="<%=usuario.usuario%>" type="text" name="usuario">
 						</article>
 
 						<article class="contraseña">
 							<label for="contraseña">Contraseña:</label>
-							<input value="<%=users[0].contraseñaDelUsuario%>" type="contraseña" name="">
+							<input placeholder="<%=usuario.contraseña%>" type="contraseña" name="">
 						</article>
 
 						<article class="nacimiento">
 							<label for="fecha">Fecha de nacimiento:</label>
-							<input value="<%=users[0].nacimientoDelUsuario%>" type="number" name="fechaNacimiento">
+							<input placeholder="<%=usuario.fechaDeNacimiento%>" type="number" name="fechaNacimiento">
 						</article>
 
 						<article class="documento">
 							<label for="documento">Numero de documento:</label>
-							<input value="<%=users[0].documentoDelUsuario%>" type="number" name="nroDocumento">
+							<input placeholder="<%=usuario.nroDeDocumento%>" type="number" name="nroDocumento">
 						</article>
 
 						<article class="foto">
 							<label for="foto">Foto de perfil:</label> <input
 								accept="image/jpg, image/jpeg, image/png, image/webp, image/JPG, image/JPEG, image/PNG, image/WEBP"
-								type="file" multiple="" autocomplete="off" value="<%=users[0].fotoDelUsuario%>" name="fotoperfil">
+								type="file" multiple="" autocomplete="off" value="<%=usuario.fotoDePerfil%>" name="fotoperfil">
 								</article>
 
 							<label for="enviar">Ingresar a mi usuario</label>
@@ -58,7 +58,7 @@
 
 
 				<!-- footer -->
-				<%- include('./parciales/header') %>
+				<%- include('parciales/footer') %>
 				<!-- /footer -->
 	</body>
 

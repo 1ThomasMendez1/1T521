@@ -3,50 +3,49 @@
 <!-- Include Head -->
 
 <!-- Head -->
-<%- include('./parciales/head') %>
+<%- include('parciales/head') %>
 	<!-- Head -->
 
 	<body class="log">
 		<!-- Header -->
-		<%- include('./parciales/header') %>
-			<!-- /Header -->
+		<%- include('parciales/header') %>
+		<!-- /Header -->
 
-			<main>
+		<main>
 
-				<% if(locals.erroresLogin){ %>
-					<p class="mensajeError" style="color: red;">
-						<%= erroresLogin.message %>
-					</p>
-					<% } %>
+    
+			<% if(locals.erroresLogin){ %>
+			  <p class="mensajeError" style="color: red;"> <%= erroresLogin.message %>
+			  </p>
+		  <% } %>
+		
+			<section class="login-section">
+				<form class="login-form" action="/users/login" method="POST">
+					<article class="title"> <i class="fas fa-sign-in-alt"></i> Login  <i class="fas fa-sign-in-alt"></i></article>
+					<article class="article-login">
+						<input id="place-holder" class="input" type="email" name="email" placeholder="Usuario" />
+					</article>
 
-						<section class="login-section">
-							<form class="login-form" action="/users/login" method="POST">
-								<article class="title">Login</article>
-								<article class="usuario">
-									<input id="place-holder" class="input" type="email" name="email" placeholder="Usuario" />
-								</article>
-
-								<article class="contraseña">
-									<input id="place-holder" class="input" type="password" name="password"
-										placeholder="Clave" />
-								</article>
-								<article class="input-container ic1 checkbox">
-									<label for="remember">Recordarme</label>
-									<input id="remember" class="input" type="checkbox" name="remember" />
-								</article>
-								<button type="text" class="submit">submit</button>
-							</form>
-
-						</section>
-
-
-						</section>
-			</main>
-
+					<article class="article-login">
+						<input id="place-holder" class="input" type="password" name="password" placeholder="Clave" />
+					</article>
+					<article class="remember">
+					  <label for="remember">Recordarme</label>
+					  <input id="remember" class="input" type="checkbox" name="remember" /> 
+				  </article>
+					<button type="text" class="submit">Enviar</button>
+				  </form>
+		
+			  </section>
+		
+		
+			</section>
+		  </main>
 
 
-			<!-- footer -->
-			<%- include('./parciales/footer') %>
+
+				<!-- footer -->
+				<%- include('parciales/footer') %> 
 				<!-- /footer -->
 	</body>
 

@@ -4,7 +4,8 @@ let productos = require('../controladores/productsControllers'); //requiero el c
 
 
 
-router.get('/detalle', productos.detail)
+router.get('/detalle', productos.index)
+router.get('/', productos.index)
 router.get('/product-add', productos.productAdd)
 router.get('/search-results', productos.searchResults)
 

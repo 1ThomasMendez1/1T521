@@ -1,6 +1,9 @@
 const modulos = require("../db/modulos");
 
 const indexController = {
+
+    
+
     index: function (req, res) {
         return res.render('index', {
             
