@@ -59,7 +59,7 @@ const usersController = {
             return res.redirect("user/login")
         })
     },
-    
+
     profile: function (req, res) {
         res.render('profile', {
             titulo: modulos.usuarios,
@@ -69,12 +69,20 @@ const usersController = {
         })
     },
     profileEdit: function (req, res) {
+
         res.render('profile-edit', {
             info: modulos.usuario,
             img: modulos.usuarios,
             usuario: modulos.usuarios,
             producto: modulos.productos
         })
+
+        res.render('profile-edit', { 
+            info : modulos.usuario,
+            img : modulos.usuarios,
+            usuario : modulos.usuarios,
+            producto : modulos.productos
+         })
     },
 
     productAdd: function (req, res) {
@@ -82,6 +90,7 @@ const usersController = {
             usuario: modulos.usuarios
         })
     },
+
 };
 
 
