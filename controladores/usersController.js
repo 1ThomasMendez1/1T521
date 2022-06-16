@@ -1,4 +1,4 @@
-const modulos = require("../db/modulos");
+const modulos = require("../database/modulos");
 const user = modulos.usuarios
 
 /* Requiriendo el modulo de bcryptjs */
