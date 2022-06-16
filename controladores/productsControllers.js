@@ -1,4 +1,4 @@
-const modulos = require("../db/modulos");
+const modulos = require("../database/modulos");
 
 
 
