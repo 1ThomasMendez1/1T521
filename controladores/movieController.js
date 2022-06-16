@@ -1,4 +1,4 @@
-const db = require ('../database/models')
+const db = require ('../database/modulos')
 const movie = db.Movie 
 
 const movieController={
