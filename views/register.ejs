@@ -11,51 +11,48 @@
 		<%- include('parciales/header') %>
 		<!-- /Header -->
 
-		<!-- Novedades -->
+		<!-- Registracion -->
 		<div class="container products-wrapper">
 			<div class="row">
 				<section class="caja-registro">
 					<section class="registro">
 						<h2 class="products-title"> <i class="far fa-address-card"></i>     Registrate     <i class="far fa-address-card"></i></h2>
 			</div>
-			<!-- Show the "ultimos" products -->
+			<!-- Formulario -->
 			<h2 class="col-12">
-				<form class="register-form" action="/users">
+
+				<% if (locals.errors) { %>
+					<p class="Alerta" ><%= locals.errors.message %> </p>
+			  <% } %>
+
+				<form class="register-form" action="/users/register" method="POST" enctype="multipart/form-data">
 					<article class="email">
+						
+
+					  
 						<label for="email">Email:</label>
-						<input type="email" name="email">
+						<input type="email" name="email" placeholder="email" id="email">
 					</article>
 
 					<article class="usuario">
 						<label for="usuario">Nombre de usuario:</label>
-						<input type="text" name="text">
+						<input type="name" name="name" placeholder="name" id="name">
 					</article>
 
 					<article class="contraseña">
 						<label for="contraseña">Contraseña:</label>
-						<input type="password">
+						<input type="password" name="password" placeholder="password" id="password">
 
 					</article>
 
 					<article class="nacimiento">
 						<label for="fecha">Fecha de nacimiento:</label>
-						<input type="date">
-					</article>
-
-					<article class="documento">
-						<label for="documento">Numero de documento:</label>
-						<input type="number">
-
-					</article>
-
-					<article class="foto">
-						<label for="foto">Foto de perfil:</label> <input
-							accept="image/jpg, image/jpeg, image/png, image/webp, image/JPG, image/JPEG, image/PNG, image/WEBP"
-							type="file" multiple="" autocomplete="off">
+						<input type="date" name="date" placeholder="date" id="date">
 					</article>
 
 					<article class="enviar">
-							<input class="form-input " type="submit" value="Enviar">
+						<button type="text" class="form-input">Enviar</button>
+			
 						</article>
 
 

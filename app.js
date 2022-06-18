@@ -9,7 +9,6 @@ const indexRouter = require('./routes/index.js')
 const usersRouter = require('./routes/users') //aqui requiero  el archivo de ruteo que se va a encargar
 // de manejar los recurso solicitados posteriormente
 const productsRouter =require('./routes/products');
-const productsControllers = require('./controladores/productsControllers')
 
 var app = express();
 

@@ -5,8 +5,14 @@
 <%- include('parciales/head') %>
 <!-- Head -->
 <body>
+
 	<!-- Header -->
-	<%- include('parciales/header') %>
+	<% if (locals.user != undefined) { %>
+		<%- include('parciales/headerLog') %>
+      <% }else { %>
+		<%- include('parciales/header') %>
+      <% } %> 
+
 	<!-- /Header -->
 	
 	<!-- Banner -->
