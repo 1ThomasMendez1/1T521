@@ -1,31 +1,6 @@
 {
-  "name": "1t521",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "ejs": "~2.6.1",
-    "express": "~4.16.1",
-    "express-session": "^1.17.3",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1",
-<<<<<<< HEAD
-    "multer": "^1.4.5-lts.1",
-    "path": "^0.12.7"
-=======
-<<<<<<< HEAD
-    "multer": "^1.4.5-lts.1",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.19.0"
-=======
-    "mysql2": "^2.3.3",
-    "sequelize": "^6.20.1"
->>>>>>> a94097bfd957c6ee29f6b0f463ea9c1a2a134437
->>>>>>> a6c7c644b227f200d7a5e9d3fff31e123363ba3e
+    "sequelize": "^6.21.0"
   }
 }
