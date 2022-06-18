@@ -11,6 +11,7 @@
 		<%- include('parciales/header') %>
 		<!-- /Header -->
 
+<<<<<<< HEAD
 		<!-- Registracion -->
 		<div class="container products-wrapper">
 			<div class="row">
@@ -59,6 +60,43 @@
 				</form>
 				</section>
 			</h2>
+=======
+		<main>
+
+    
+			<% if(locals.erroresLogin){ %>
+			  <p class="mensajeError" style="color: red;"> <%= erroresLogin.message %>
+			  </p>
+		  <% } %>
+		
+		
+			<section class="login-section">
+				<form class="login-form" action="/users/register" method="POST">
+					<article class="title"><i class="fas fa-sign-in-alt"></i>  Registrate  <i class="fas fa-sign-in-alt"></i></article>
+					<article class="article-login">
+					  <input id="place-holder" class="input" type="text" name="name" placeholder="Nombre" />
+				  </article>
+					<article class="article-login">
+						<input id="place-holder" class="input" type="email" name="email" placeholder="Correo" />
+					</article>
+		
+					<article class="article-login">
+						<input id="place-holder" class="input" type="password" name="password" placeholder="Clave" />
+					</article>
+		
+					<article class="article-login">
+					  <input id="place-holder" class="input" type="file" name="imgPerfil"/>
+					</article>
+					<button type="place-holder" class="submit">Enviar</button>
+				  </form>
+		
+			  </section>
+		
+		
+			</section>
+		  </main>
+		
+>>>>>>> a6c7c644b227f200d7a5e9d3fff31e123363ba3e
 
 
 			<!-- footer -->

@@ -1,11 +1,12 @@
-//esta es el archivo de rutas de usuarios
-const express = require('express'); //realizo un require del modulo express
-const router = express.Router(); //variable que guarda la ejecución del método router de express
-let usersController = require('../controladores/usersController'); //requiero el controlador de usuario
+
+const express = require('express');
+const router = express.Router(); 
+let usersController = require('../controladores/usersController'); 
 
 let multer = require('multer')
 let path = require('path')
 
+<<<<<<< HEAD
 let storage = multer.diskStorage({  //configuramos de multer la destinacion del archivo que vamos a guardar y el filename.
     destination : function(req, file, cb) {
         cb(null, path.join(__dirname, '../public/images/users'))
@@ -30,6 +31,20 @@ router.post('/login', usersController.procesarLogin);
 
 router.get('/profile-edit', );
 router.get('/product-add', )
+=======
+//SUFIJOS
+
+router.get('/register', usersController.register);  //router es la variable que almacena la ejecucion y get el metodo http
+router.post('/register', usersController.procesarRegister);
+router.get('/login', usersController.login);
+router.post('/login',usersController.procesarLogin);
+
+
+// (path)dentro del parentesis encontramos un string y hace referencia a la ruta en si misma (url que llega por peticion)
+router.get('/', usersController.profile);
+router.get('/profile-edit', usersController.profileEdit);
+router.get('/product-add', usersController.productAdd)
+>>>>>>> a6c7c644b227f200d7a5e9d3fff31e123363ba3e
 
 module.exports = router; // exportamos  
 

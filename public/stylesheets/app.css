@@ -549,7 +549,7 @@ textarea.form-input {
   margin-top: auto;
   font-family: Arial, Helvetica, sans-serif;
 }
-
+/*  Login y registro  */
 .log {
   background-image: url("../images/fondo.webp");
 }
@@ -562,45 +562,57 @@ textarea.form-input {
   flex-direction: column;
 
 }
+.login-section {
+  font-size: large;
+  display: flex;
+  justify-content: center;
 
+}
 .login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: rgb(255, 200, 0);
+  border-radius: 5px;
+  width: fit-content;
+  margin-top: 50px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-
-.usuario {
+.title {
   margin-bottom: 35px;
   background-color: lightgrey;
   padding: 20px;
-  border-radius: 20px;
-  width: fit-content;
+  border-radius: 5px;
 }
 
-.contraseña {
+.article-login {
   margin-bottom: 35px;
   background-color: lightgrey;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 5px;
   width: fit-content;
 }
 
-.checkbox {
-  margin-bottom: 35px;
-  background-color: lightgrey;
-  padding: 20px;
-  border-radius: 20px;
-  width: fit-content;
+#place-holder {
+  font-size: medium;
   
+}
+
+.remember {
+  border-radius: 5px;
+  background-color: lightgray;
+  padding: 15px;
+  margin-bottom: 20px;
 }
 
 .products-title {
   margin-bottom: 35px;
   background-color: lightgrey;
   padding: 22px;
-  border-radius: 20px;
+  border-radius: 5px;
   width: fit-content;
   font-size: 22px;
   color: #000000;
@@ -702,7 +714,7 @@ textarea.form-input {
   border-radius: 20px;
   width: fit-content;
 }
-
+/* PRODUCTO */
 .product-add {
   margin: 40px;
   padding: 30px;
@@ -739,6 +751,7 @@ textarea.form-input {
 
 }
 
+<<<<<<< HEAD
 .Alerta {
   font-size: 50px;
   background-color: black;
@@ -747,3 +760,14 @@ textarea.form-input {
   text-align: center;
 }
 
+=======
+<<<<<<< HEAD
+.logoUsuario {
+  display: flex;
+  text-decoration: none;
+  color: black;
+
+}
+=======
+>>>>>>> f9d5ac8de8da507128fa54f38051a7c3f8c1c046
+>>>>>>> a6c7c644b227f200d7a5e9d3fff31e123363ba3e

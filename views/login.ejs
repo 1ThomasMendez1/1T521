@@ -11,39 +11,36 @@
 		<%- include('parciales/header') %>
 		<!-- /Header -->
 
-		<!-- Novedades -->
-		<div class="container products-wrapper">
-			<div class="row">
-				<section class="caja-ingresar">
-					<article class="ingresar">
-						<h1 class="products-title"> <i class="fas fa-sign-in-alt"></i>    Ingresar    <i class="fas fa-sign-in-alt"></i></h1>
+		<main>
 
-						<!-- Show the "ultimos" products -->
-						<h2 class="col-12">
-							<form action="/users" method="get" class="login-form">
-								<article class="usuario">
-									<label for="usuario">Usuario:</label>
-									<input type="email" name="email">
-								</article>
-
-								<article class="contraseña">
-									<label for="password">Contraseña:</label>
-									<input type="password" name="password">
-								</article>
-
-								<article class="checkbox">
-									<label for="recordar">Recordar usuario </label>
-									<input type="checkbox">
-								</article>
-
-								<article class="enviar">
-									<input class="form-input " type="submit" value="Log in">
-								</article>
-
-							</form>
-						</h2>
+    
+			<% if(locals.erroresLogin){ %>
+			  <p class="mensajeError" style="color: red;"> <%= erroresLogin.message %>
+			  </p>
+		  <% } %>
+		
+			<section class="login-section">
+				<form class="login-form" action="/users/login" method="POST">
+					<article class="title"> <i class="fas fa-sign-in-alt"></i> Login  <i class="fas fa-sign-in-alt"></i></article>
+					<article class="article-login">
+						<input id="place-holder" class="input" type="email" name="email" placeholder="Usuario" />
 					</article>
-				</section>
+
+					<article class="article-login">
+						<input id="place-holder" class="input" type="password" name="password" placeholder="Clave" />
+					</article>
+					<article class="remember">
+					  <label for="remember">Recordarme</label>
+					  <input id="remember" class="input" type="checkbox" name="remember" /> 
+				  </article>
+					<button type="text" class="submit">Enviar</button>
+				  </form>
+		
+			  </section>
+		
+		
+			</section>
+		  </main>
 
 
 
