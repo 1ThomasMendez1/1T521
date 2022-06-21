@@ -747,8 +747,15 @@ textarea.form-input {
   justify-content: space-around;
   text-decoration: none;
   font-size: 19px;
+}
 
 
+.Alerta {
+  font-size: 50px;
+  background-color: black;
+  color: white;
+  border-radius: 15px;
+  text-align: center;
 }
 
 .logoUsuario {
@@ -757,3 +764,4 @@ textarea.form-input {
   color: black;
 
 }
+

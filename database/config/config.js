@@ -1,8 +1,8 @@
-module.exports = {
+module.exports ={
   "development": {
     "username": "root",
-    "password": "root", /* DEPENDE EL SISTEMA OPERATIVO */
-    "database": "movies_db",
+    "password": null,
+    "database": "dbTeamMessi",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
@@ -14,10 +14,10 @@ module.exports = {
     "dialect": "mysql"
   },
   "production": {
-    "username": "phype_admin",
-    "password": "PebeteHype22",
-    "database": "phype_db",
-    "host": " mysql-phype.alwaysdata.net",
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }
