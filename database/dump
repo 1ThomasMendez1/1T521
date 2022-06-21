@@ -1,75 +1,134 @@
-CREATE SCHEMA dbTeamMessi; 
+drop schema if exists dbTeamMessi;
+
+CREATE SCHEMA dbTeamMessi;
 
 USE dbTeamMessi;
-CREATE TABLE usuarios (
-id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-foto VARCHAR(300),
-nombre_usuario VARCHAR(50) NOT NULL,
-fecha_nacimiento DATE NOT NULL,
-contrasenia VARCHAR(50) NOT NULL,
-email  VARCHAR(50) NOT NULL
-);
 
+CREATE TABLE usuarios (
+id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+username VARCHAR(150) NOT NULL,
+imagen_perfil VARCHAR(500) NOT NULL,
+email VARCHAR(200) UNIQUE NOT NULL,
+password VARCHAR(200) NOT NULL,
+birthdate DATE NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
 
 CREATE TABLE productos (
 id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
-titulo VARCHAR(150) NOT NULL,
-descripcion VARCHAR (300) NOT NULL,
-fecha_creacion DATETIME NOT NULL,
-imagen_producto VARCHAR(500) NOT NULL
+titulo_producto VARCHAR(150) NOT NULL,
+imagen_producto VARCHAR(500) NOT NULL,
+descripcion_producto VARCHAR (300) NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+usuarios_id int unsigned
+
 );
 
 CREATE TABLE comentarios(
 id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
-texto VARCHAR(500),
-id_product INT UNSIGNED,
-id_usuarios INT UNSIGNED,
-FOREIGN KEY (id_product) REFERENCES productos(id),
-FOREIGN KEY (id_usuarios) REFERENCES usuarios(id)
+texto_comentario VARCHAR(500),
+productos_id INT UNSIGNED,
+usuarios_id INT UNSIGNED,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
 );
 
 CREATE TABLE seguidores (
 id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
-id_seguido INT UNSIGNED,
-id_seguidor INT UNSIGNED,
-FOREIGN KEY (id_seguido) REFERENCES usuarios(id),
-FOREIGN KEY (id_seguidor) REFERENCES usuarios(id)
+usuarios_seguidos_id INT UNSIGNED,
+usuarios_seguidores_id INT UNSIGNED,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+FOREIGN KEY (usuarios_seguidos_id) REFERENCES usuarios(id),
+FOREIGN KEY (usuarios_seguidores_id) REFERENCES usuarios(id)
 );
 
-INSERT INTO usuarios (foto,nombre_usuario,fecha_nacimiento,contrasenia,email)
-VALUES ('','pipevarela','22-05-03','pipe123','fvarela@udesa.edu.ar'),
-('','thomasmendez','12-12-02','thom123','tmendez@udesa.edu.ar'),
-('','bautisp','13-10-02','bau123','bsanpedro@udesa.edu.ar'),
-('','enzocopetti','9-9-2000','enzocope123','ecopetti@udesa.edu.ar'),
-('','edwincardona','10-10-2000','ecardona123','edwin@udesa.edu.ar');
+ALTER TABLE `productos` 
+ADD foreign key (usuarios_id) references usuarios (id);
 
-INSERT INTO productos (titulo,descripcion,fecha_creacion,imagen_producto)
-VALUES('Air Jordan 1','El primer modelo de la colección y seguramente el más popular. Llevaron el sobrenombre de «Notorious» y convirtieron a Michael Jordan en Rookie of the Year','22/05/2021',''),
-('Air Jordan 35 DNA','Un homenaje a los colores clásicos de las Jordan 5, de ahí el sobrenombre de DNA','24/7/2020',''),
-('Air Jordan XXXI','Son un reboot de las Air Jordan 1, una reinterpretación del primer modelo','22/1/2022',''),
-('Yeezy Boost 350','Es un modelo ultramoderno que conserva los elementos que hacen de esta zapatilla una de las más populares del momento, y viene acompañada con colores contrastados y atractivos, que generalmente suelen ser muy exclusivos','23/3/2022',''),
-('Yeezy Boost 700','es un modelo inspirado en los tenis para correr con una suela gruesa. También tienen una combinación de materiales en la parte superior, lengüeta y cuello acolchados, amortiguación Boost y una suela de goma','12/4/2020',''),
-('Nike Air Force Paradise','Las Air Force de toda la vida pero diseñadas por Nike y G-Dragon de la banda Big Bang','5/12/2020',''),
-('Jordan Superfly','Estas zapatillas cuentan con la última revolución en amortiguación de baloncesto: espuma Nike React ultrarreactiva diseñada para jugar mejor y durante más tiempo','3/12/2020',''),
-('Nike Air Huarache','Confeccionado para obtener ultra comodidad en cada pisada, con entresuela de espuma suave brindando ligereza y capellada de malla combinado con sintético','15/10/2021',''),
-('Adiddas Ozweego','Las zapatillas Ozweego se inspiran en los 90 para crear un estilo innovador. Estas zapatillas reinventan la OZWEEGO 3 de 1988 y la adaptan al presente. El resultado es un diseño ligero y cómodo equipado con la tecnología adiPRENE para ofrecer la máxima comodidad','17/11/2021',''),
-('Nike Mid Blazer Vintage 77','Nike Blazer Mid 77 SE toma el estilo clásico de Nike Básquetbol. Sus diseños exquisitos de gamuza, el diseño Swoosh retro y el cuello acolchado lo convierten en un calzado básico moderno','2/7/2021','');
 
-INSERT INTO comentarios (texto,id_product,id_usuarios)
-VALUES('altaaaas','1','2'),
-('precio?','2','3'),
-('mmm normalitas','4','5'),
-('queee locura de zapas','6','3'),
-('las mejores zapatillas de la historia','8','4'),
-('se vuelan amigo','10','1'),
-('mis favoritas lejos','7','2'),
-('son hermosas','1','4'),
-('uffff locura','2','5'),
-('feisimas','2','1');
+ALTER TABLE `comentarios` 
+ADD FOREIGN KEY (productos_id) REFERENCES productos(id),
+ADD FOREIGN KEY (usuarios_id) REFERENCES usuarios(id);
 
-INSERT INTO seguidores (id_seguido,id_seguidor)
-VALUES('1','2'),
-('2','1'),
-('4','2'),
-('5','1'),
-('2','3');
+-- ADD foreign key (comentarios_id) references comentarios (id); -- La clave foráenea va en la otra tabla.
+insert into usuarios (username, imagen_perfil, email, password, birthdate, created_at, updated_at) 
+values ('kundo','','kundo@gmail.com', 'hola123','1999-03-06','2022-04-04','2022-05-05'),
+('marian','','marian@gmail.com','hola123','2003-03-25','2022-04-04','2022-05-05'),
+('mauro', '','mauro@gmail.com','hola123', '2003-04-19','2022-04-04','2022-04-04'),
+('franco', '', 'franco@gmail.com', 'hola123', '2002-09-09','2022-04-04','2022-04-04'),
+('roman','','roman@gmail.com', 'hola123', '1975-06-24','2022-05-05','2022-06-06'),
+('Brian','', 'brian@gmail.com', 'hola123', '1992-01-01','2022-05-05','2022-06-06'),
+('Luis','', 'luis@gmail.com', 'hola123', '1985-10-10','2022-05-05','2022-06-06');
+
+insert into productos ( titulo_producto, imagen_producto, descripcion_producto, created_at, updated_at, usuarios_id)
+values ('Big Mac', '', 'El clásico de siempre, esta vez modernizado','2022-06-15','2022-06-15',1),
+('Cuarto de Libra', '', 'Historicamente nuestra mejor hamburguesa','2022-06-15','2022-06-15',1),
+('Triple Bacon', '', 'La panceta hace mejor a las hamburguesas','2022-06-15','2022-06-15',2),
+('McFiesta', '', 'Fiessta en tu bocaaa','2022-06-15','2022-06-15',3),
+('Grand Tasty Turbo Bacon', '', 'la mejor hamburguesa de la era moderna','2022-06-15','2022-06-15',3),
+('McVeggie', '', 'Vegeteraiana para todos los gustos','2022-06-15','2022-06-15',2),
+('McPollo', '', 'Y si sos del pollo es por acá..','2022-06-15','2022-06-15',4),
+('DobleCheese', '', 'Q','2022-06-15','2022-06-15',6),
+('Tripe Monster', '', 'te la bancas?','2022-06-15','2022-06-15',3),
+('Original Meet', '', 'Carne vacuna ','2022-06-15','2022-06-15',5),
+('Chimi Burger', '', 'Un poquito del asado en una hamburgesa','2022-06-15','2022-06-15',2),
+('Pork Burger', '', 'Hamburgeusa hecha a base de cerdo','2022-06-15','2022-06-15',7),
+('ChoriBurger', '', 'el embutido por excelencia','2022-06-15','2022-06-15',6),
+('CasaMoma', '', 'La mejor hamburguesa que vas a probar en tu vida','2022-06-15','2022-06-15',5),
+('Mostaza', '', 'Buena alternativa','2022-06-15','2022-06-15',7),
+('Triple Queso', '', 'No Falla.','2022-06-15','2022-06-15',4),
+('TFTS', '', 'Hamburguesa texana','2022-06-15','2022-06-15',2),
+('Buenos Aires', '', 'Bien porteña','2022-06-15','2022-06-15',2),
+('Chaco', '', 'La chaconeta señores...','2022-06-15','2022-06-15',1),
+('Uruguay', '', 'Hamburguesa de nuestros hermanos uruguayos','2022-06-15','2022-06-15',4),
+('TEXAS', '', 'Grilled master piece','2022-06-15','2022-06-15',6);
+
+INSERT INTO comentarios (texto_comentario, productos_id, usuarios_id, created_at)
+VALUES
+('caravana!!',4, 1, '2022-06-15'),
+('que locura!!',5,7, '2022-06-15'),
+('la quiero!',6,5, '2022-06-15'),
+('dondeeee',7,1, '2022-06-15'),
+('wow',8,2,'2022-06-15'),
+('sin palabras',9,2, '2022-06-15'),
+('es una locura esto',10,3, '2022-06-15'),
+('jajajaj',11,4 ,'2022-06-15'),
+('jjujuj', 12,3,'2022-06-15'),
+('es la mejor hamburguesa que probé en mi vida',13,4, '2022-06-15'),
+('quiero comerla ya',14,1, '2022-06-15'),
+('receta?',15,6, '2022-06-15'),
+('en donde la comieron?',16,2, '2022-06-15'),
+('cuanto cuesta?',17,3 ,'2022-06-15'),
+('quien la hizo',18,4 ,'2022-06-15'),
+('que locura esa hamburguesa',19,7,'2022-06-15'),
+('uruguay no falla',20,6, '2022-06-15'),
+('quiero hacerla',1,5,'2022-06-15'),
+('con que pan está hecha?',1,3, '2022-06-15'),
+('nunca falla ese lugar',2,2, '2022-06-15'),
+('macdonalds',3,1 ,'2022-06-15'),
+('mac no fallaaaaaa',4,1, '2022-06-15'),
+('masterpiece',5,6, '2022-06-15'),
+('nunca vi algo igual',6,6,'2022-06-15'),
+('tengo hambre',7,1 ,'2022-06-15'),
+('que masa esa burrrggga',8,1, '2022-06-15'),
+('mira lo que es eso papaaaaaa',9,2, '2022-06-15'),
+('que paso aca?',10,5, '2022-06-15'),
+('muy muy muy muy muy buena',11,5, '2022-06-15'),
+('OMG',12,7, '2022-06-15'),
+('beautiful burgerrrr!!',13,4, '2022-06-15'),
+('esto es un delirio hermano',14,2, '2022-06-15');
+
+insert into seguidores (usuarios_seguidos_id, usuarios_seguidores_id)
+values (1,2),
+(1,3),
+(1,4),
+(1,5),
+(2,1),
+(2,5),
+(3,7),
+(4,1),
+(4,2)

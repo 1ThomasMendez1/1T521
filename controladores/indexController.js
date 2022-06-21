@@ -1,14 +1,14 @@
 const db = require("../database/models"); //Requiero los modulos de la base de datos, y los almaceno en db
 const op = db.sequelize.op //Requiero los operadores Sequelize y los almaceno en OP.
-
+const productos = db.Productos
 
 const indexController = {
-
+ 
     home: (req, res) => {
-        db.Productos.findAll({
-            include:[{
-                association: 'usuarios_productos'
-            }, {
+        productos.findAll({
+           include:[{
+        association: 'usuarios_productos'
+           }, {
                 association: 'comentarios',
                 include: {
                     association: 'comentarios_productos'
@@ -23,12 +23,12 @@ const indexController = {
         })
         .then((result) =>{
             console.log(result);
-            return res.render ('home',{
+            return res.render ('index',{
                 datos: result  //no termino de entender a que hacer referencia "datos"
-            });
+           });
         })
         .catch ((error) =>{
-            console.log(error);
+           console.log(error);
         })
     }
 
