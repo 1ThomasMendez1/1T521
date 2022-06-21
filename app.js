@@ -21,7 +21,7 @@ const multer = require('multer');
 const path = require('path');
 */
 
-const indexRouter = require('./routes/index.js')
+const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users') //aqui requiero  el archivo de ruteo que se va a encargar
 // de manejar los recurso solicitados posteriormente
 const productsRouter =require('./routes/products');
