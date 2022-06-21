@@ -1,0 +1,75 @@
+CREATE SCHEMA dbTeamMessi; 
+
+USE dbTeamMessi;
+CREATE TABLE usuarios (
+id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+foto VARCHAR(300),
+nombre_usuario VARCHAR(50) NOT NULL,
+fecha_nacimiento DATE NOT NULL,
+contrasenia VARCHAR(50) NOT NULL,
+email  VARCHAR(50) NOT NULL
+);
+
+
+CREATE TABLE productos (
+id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+titulo VARCHAR(150) NOT NULL,
+descripcion VARCHAR (300) NOT NULL,
+fecha_creacion DATETIME NOT NULL,
+imagen_producto VARCHAR(500) NOT NULL
+);
+
+CREATE TABLE comentarios(
+id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+texto VARCHAR(500),
+id_product INT UNSIGNED,
+id_usuarios INT UNSIGNED,
+FOREIGN KEY (id_product) REFERENCES productos(id),
+FOREIGN KEY (id_usuarios) REFERENCES usuarios(id)
+);
+
+CREATE TABLE seguidores (
+id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+id_seguido INT UNSIGNED,
+id_seguidor INT UNSIGNED,
+FOREIGN KEY (id_seguido) REFERENCES usuarios(id),
+FOREIGN KEY (id_seguidor) REFERENCES usuarios(id)
+);
+
+INSERT INTO usuarios (foto,nombre_usuario,fecha_nacimiento,contrasenia,email)
+VALUES ('','pipevarela','22-05-03','pipe123','fvarela@udesa.edu.ar'),
+('','thomasmendez','12-12-02','thom123','tmendez@udesa.edu.ar'),
+('','bautisp','13-10-02','bau123','bsanpedro@udesa.edu.ar'),
+('','enzocopetti','9-9-2000','enzocope123','ecopetti@udesa.edu.ar'),
+('','edwincardona','10-10-2000','ecardona123','edwin@udesa.edu.ar');
+
+INSERT INTO productos (titulo,descripcion,fecha_creacion,imagen_producto)
+VALUES('Air Jordan 1','El primer modelo de la colección y seguramente el más popular. Llevaron el sobrenombre de «Notorious» y convirtieron a Michael Jordan en Rookie of the Year','22/05/2021',''),
+('Air Jordan 35 DNA','Un homenaje a los colores clásicos de las Jordan 5, de ahí el sobrenombre de DNA','24/7/2020',''),
+('Air Jordan XXXI','Son un reboot de las Air Jordan 1, una reinterpretación del primer modelo','22/1/2022',''),
+('Yeezy Boost 350','Es un modelo ultramoderno que conserva los elementos que hacen de esta zapatilla una de las más populares del momento, y viene acompañada con colores contrastados y atractivos, que generalmente suelen ser muy exclusivos','23/3/2022',''),
+('Yeezy Boost 700','es un modelo inspirado en los tenis para correr con una suela gruesa. También tienen una combinación de materiales en la parte superior, lengüeta y cuello acolchados, amortiguación Boost y una suela de goma','12/4/2020',''),
+('Nike Air Force Paradise','Las Air Force de toda la vida pero diseñadas por Nike y G-Dragon de la banda Big Bang','5/12/2020',''),
+('Jordan Superfly','Estas zapatillas cuentan con la última revolución en amortiguación de baloncesto: espuma Nike React ultrarreactiva diseñada para jugar mejor y durante más tiempo','3/12/2020',''),
+('Nike Air Huarache','Confeccionado para obtener ultra comodidad en cada pisada, con entresuela de espuma suave brindando ligereza y capellada de malla combinado con sintético','15/10/2021',''),
+('Adiddas Ozweego','Las zapatillas Ozweego se inspiran en los 90 para crear un estilo innovador. Estas zapatillas reinventan la OZWEEGO 3 de 1988 y la adaptan al presente. El resultado es un diseño ligero y cómodo equipado con la tecnología adiPRENE para ofrecer la máxima comodidad','17/11/2021',''),
+('Nike Mid Blazer Vintage 77','Nike Blazer Mid 77 SE toma el estilo clásico de Nike Básquetbol. Sus diseños exquisitos de gamuza, el diseño Swoosh retro y el cuello acolchado lo convierten en un calzado básico moderno','2/7/2021','');
+
+INSERT INTO comentarios (texto,id_product,id_usuarios)
+VALUES('altaaaas','1','2'),
+('precio?','2','3'),
+('mmm normalitas','4','5'),
+('queee locura de zapas','6','3'),
+('las mejores zapatillas de la historia','8','4'),
+('se vuelan amigo','10','1'),
+('mis favoritas lejos','7','2'),
+('son hermosas','1','4'),
+('uffff locura','2','5'),
+('feisimas','2','1');
+
+INSERT INTO seguidores (id_seguido,id_seguidor)
+VALUES('1','2'),
+('2','1'),
+('4','2'),
+('5','1'),
+('2','3');

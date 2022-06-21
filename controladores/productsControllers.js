@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-
-=======
 const modulos = require("../database/modulos");
->>>>>>> a6c7c644b227f200d7a5e9d3fff31e123363ba3e
 
 
 
