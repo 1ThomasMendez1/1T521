@@ -27,18 +27,31 @@ module.exports = (sequelize, dataTypes) => {
         underscored: true,
     }
 
-    let usuarios = sequelize.define(alias, cols, config)
+    let usuarios = sequelize.define("Usuario", cols, config)
 
-    usuarios.associate = (models) => {
-        usuarios.hasMany(models.productos, {
-            as: "productos_usuarios",
+    Usuario.associate = (models) => {
+        Usuario.hasMany(models.Producto, {
+            as: "productosUsuarios", //se usa en las viustas
             foreignKey: "usuarios_id"
         })
+        Usuario.hasMany(models.Comentario,{
+            as: "comentariosUsuario",
+            foreignKey: "usuarios_id"
+        })
+        Usuario.hasMany(models.Seguidor,{
+            as: "Seguidores",
+            foreignKey: "usuarios_seguidores_id"
+        })
+        Usuario.hasMany(models.Seguidor,{
+            as: "Seguidos",
+            foreignKey: "usuarios_seguidos_id"
+        })
+       
 
-        return usuarios
-    }
+        return Usuario
+        }
 
-
+//usuario alias del modelo table name nombre de la tabla
 
 
 }

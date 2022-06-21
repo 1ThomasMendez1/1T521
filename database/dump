@@ -1,7 +1,7 @@
 CREATE SCHEMA dbTeamMessi; 
 
 USE dbTeamMessi;
-CREATE TABLE usuarios (
+CREATE TABLE Usuarios (
 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 foto VARCHAR(300),
 nombre_usuario VARCHAR(50) NOT NULL,
@@ -11,7 +11,7 @@ email  VARCHAR(50) NOT NULL
 );
 
 
-CREATE TABLE productos (
+CREATE TABLE Productos (
 id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
 titulo VARCHAR(150) NOT NULL,
 descripcion VARCHAR (300) NOT NULL,
@@ -19,7 +19,7 @@ fecha_creacion DATETIME NOT NULL,
 imagen_producto VARCHAR(500) NOT NULL
 );
 
-CREATE TABLE comentarios(
+CREATE TABLE Comentarios(
 id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
 texto VARCHAR(500),
 id_product INT UNSIGNED,
@@ -28,7 +28,7 @@ FOREIGN KEY (id_product) REFERENCES productos(id),
 FOREIGN KEY (id_usuarios) REFERENCES usuarios(id)
 );
 
-CREATE TABLE seguidores (
+CREATE TABLE Seguidores (
 id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
 id_seguido INT UNSIGNED,
 id_seguidor INT UNSIGNED,
@@ -36,14 +36,14 @@ FOREIGN KEY (id_seguido) REFERENCES usuarios(id),
 FOREIGN KEY (id_seguidor) REFERENCES usuarios(id)
 );
 
-INSERT INTO usuarios (foto,nombre_usuario,fecha_nacimiento,contrasenia,email)
+INSERT INTO Usuarios (foto,nombre_usuario,fecha_nacimiento,contrasenia,email)
 VALUES ('','pipevarela','22-05-03','pipe123','fvarela@udesa.edu.ar'),
 ('','thomasmendez','12-12-02','thom123','tmendez@udesa.edu.ar'),
 ('','bautisp','13-10-02','bau123','bsanpedro@udesa.edu.ar'),
 ('','enzocopetti','9-9-2000','enzocope123','ecopetti@udesa.edu.ar'),
 ('','edwincardona','10-10-2000','ecardona123','edwin@udesa.edu.ar');
 
-INSERT INTO productos (titulo,descripcion,fecha_creacion,imagen_producto)
+INSERT INTO Productos (titulo,descripcion,fecha_creacion,imagen_producto)
 VALUES('Air Jordan 1','El primer modelo de la colección y seguramente el más popular. Llevaron el sobrenombre de «Notorious» y convirtieron a Michael Jordan en Rookie of the Year','22/05/2021',''),
 ('Air Jordan 35 DNA','Un homenaje a los colores clásicos de las Jordan 5, de ahí el sobrenombre de DNA','24/7/2020',''),
 ('Air Jordan XXXI','Son un reboot de las Air Jordan 1, una reinterpretación del primer modelo','22/1/2022',''),
@@ -55,7 +55,7 @@ VALUES('Air Jordan 1','El primer modelo de la colección y seguramente el más p
 ('Adiddas Ozweego','Las zapatillas Ozweego se inspiran en los 90 para crear un estilo innovador. Estas zapatillas reinventan la OZWEEGO 3 de 1988 y la adaptan al presente. El resultado es un diseño ligero y cómodo equipado con la tecnología adiPRENE para ofrecer la máxima comodidad','17/11/2021',''),
 ('Nike Mid Blazer Vintage 77','Nike Blazer Mid 77 SE toma el estilo clásico de Nike Básquetbol. Sus diseños exquisitos de gamuza, el diseño Swoosh retro y el cuello acolchado lo convierten en un calzado básico moderno','2/7/2021','');
 
-INSERT INTO comentarios (texto,id_product,id_usuarios)
+INSERT INTO Comentarios (texto,id_product,id_usuarios)
 VALUES('altaaaas','1','2'),
 ('precio?','2','3'),
 ('mmm normalitas','4','5'),
@@ -67,7 +67,7 @@ VALUES('altaaaas','1','2'),
 ('uffff locura','2','5'),
 ('feisimas','2','1');
 
-INSERT INTO seguidores (id_seguido,id_seguidor)
+INSERT INTO Seguidores (id_seguido,id_seguidor)
 VALUES('1','2'),
 ('2','1'),
 ('4','2'),

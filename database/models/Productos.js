@@ -21,24 +21,24 @@ module.exports = (sequelize, dataTypes) => {
     }
     let config = {
         tablename: 'productos',
-        timestamps: false,
+        timestamps: true,
         underscored: true,
     };
 
-    const productos = sequelize.define('productos', cols, config);
+    const Producto = sequelize.define('Producto', cols, config);
 
-    productos.associate = (models) => {
-        productos.belongTo(models.usuarios, {
+    Producto.associate = (models) => {
+        Producto.belongTo(models.Usuario, {
             as: "usuarios_productos",
             foreignKey: "usuarios_id"
         })
 
-        productos.hasMany(models.comentarios, {
+        Producto.hasMany(models.Comentario, {
             as: "comentarios_productos",
             foreignKey: "productos_id"
         })
     }
-    return productos;
+    return Producto;
 
 
 }
