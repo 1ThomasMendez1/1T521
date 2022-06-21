@@ -21,8 +21,8 @@ const multer = require('multer');
 const path = require('path');
 */
 
-const indexRouter = require('./routes/index.js')
-const usersRouter = require('./routes/users') //aqui requiero  el archivo de ruteo que se va a encargar
+//const indexRouter = require('./routes/index.js')
+//const usersRouter = require('./routes/users') //aqui requiero  el archivo de ruteo que se va a encargar
 // de manejar los recurso solicitados posteriormente
 const productsRouter =require('./routes/products');
 
@@ -45,8 +45,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter)
-app.use('/users', usersRouter) //cuando se solicite cualquier recurso, el mismo va a ser atendido por el modulo creado
+//app.use('/', indexRouter)
+//app.use('/users', usersRouter) //cuando se solicite cualquier recurso, el mismo va a ser atendido por el modulo creado
 //metodo use que pertenece a express --> en app.js van unicamente los prefijos. 
 app.use('/products', productsRouter)
 //el metodo use() recibe dos parametros, siendo el primero un string que seria el nombre del recurso. 

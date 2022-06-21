@@ -5,11 +5,11 @@ const productos = db.Productos
 const indexController = {
  
     home: (req, res) => {
-        productos.findAll({
-           include:[{
-        association: 'usuarios_productos'
-           }, {
-                association: 'comentarios',
+        db.Productos.findAll({
+            include:[{
+                association: 'usuarios_productos'
+            }, {
+                association: 'Comentarios',
                 include: {
                     association: 'comentarios_productos'
                 }
