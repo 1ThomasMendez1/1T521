@@ -747,11 +747,9 @@ textarea.form-input {
   justify-content: space-around;
   text-decoration: none;
   font-size: 19px;
-
-
 }
 
-<<<<<<< HEAD
+
 .Alerta {
   font-size: 50px;
   background-color: black;
@@ -760,14 +758,10 @@ textarea.form-input {
   text-align: center;
 }
 
-=======
-<<<<<<< HEAD
 .logoUsuario {
   display: flex;
   text-decoration: none;
   color: black;
 
 }
-=======
->>>>>>> f9d5ac8de8da507128fa54f38051a7c3f8c1c046
->>>>>>> a6c7c644b227f200d7a5e9d3fff31e123363ba3e
+
