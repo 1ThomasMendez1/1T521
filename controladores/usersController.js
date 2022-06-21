@@ -13,7 +13,6 @@ const usersController = {
     procesarLogin: (req, res) => {
         let info = req.body;
 
-        res.send(info.name)
         /*
         user.findOne({
             where: [{email: info.email}]
@@ -47,12 +46,6 @@ const usersController = {
                 name: info.name,
                 email: info.email,
                 password: passEncriptada,
-                /* 
-                remember_token: ,
-                created_at: ,
-                updated_at: ,
-                */
-               
             }
     
         user.create(usuarioParaGuardar).then((result) => {
@@ -83,14 +76,7 @@ const usersController = {
             usuario : modulos.usuarios,
             producto : modulos.productos
          })
-    },
-
-    productAdd: function (req, res) {
-        res.render('product-add', {
-            usuario: modulos.usuarios
-        })
-    },
-
+    }
 };
 
 

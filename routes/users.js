@@ -15,7 +15,7 @@ router.post('/login',usersController.procesarLogin);
 // (path)dentro del parentesis encontramos un string y hace referencia a la ruta en si misma (url que llega por peticion)
 router.get('/', usersController.profile);
 router.get('/profile-edit', usersController.profileEdit);
-router.get('/product-add', usersController.productAdd)
+/*router.get('/product-add', usersController.productAdd)*/
 
 module.exports = router; // exportamos  
 
