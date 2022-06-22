@@ -1,41 +1,36 @@
 const db = require("../database/models"); //Requiero los modulos de la base de datos, y los almaceno en db
-const op = db.sequelize.op //Requiero los operadores Sequelize y los almaceno en OP.
+const Producto = require("../database/models/Producto");
+const op = db.Sequelize.Op //Requiero los operadores Sequelize y los almaceno en OP.
+const productos = db.Producto
+const usuarios = db.User
+const comentarios = db.Comment
+
 
 
 const indexController = {
-
+ 
     home: (req, res) => {
-        db.Productos.findAll({
-            include:[{
-                association: 'usuarios_productos'
-            }, {
-                association: 'Comentarios',
-                include: {
-                    association: 'comentarios_productos'
-                }
-            }
-            ],
-            order: [
-                ['fecha_creacion','DESC']
+      productos.findAll ({
+          include : [{association: 'owner'}, {association: 'comentarios'}],
+          order : [['createdAt', 'DESC']],
+          limit: 4
+      })
+      .then(function(zapatillas){
+       productos.findAll ({
+           include: [{association: 'owner'}, {association: 'comentarios'}],
+           limit: 4
+       })
+       .then(function(zapatillas2){
+           for(let i = 0; i < zapatillas2.length; i++){
+               zapatillas.push(zapatillas2[i])
+           }
+           return res.render('index', {info: zapatillas })
+       })
+      })
+},
 
-            ],
-            limit: 20
-        })
-        .then((result) =>{
-            console.log(result);
-            return res.render ('home',{
-                datos: result  //no termino de entender a que hacer referencia "datos"
-            });
-        })
-        .catch ((error) =>{
-            console.log(error);
-        })
-    }
-
-    
 
 }
-
 module.exports = indexController
 
 
