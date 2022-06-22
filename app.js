@@ -4,16 +4,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-
-var indexRouter = require('./routes/index');
-var productRouter = require('./routes/products');
-var profileRouter = require('./routes/users');
-
 var app = express();
 const session = require('express-session');
 const db = require('./database/models')
 const users = db.User
+
+var indexRouter = require('./routes/index');
+let usersRouter = require('./routes/users');
+
+
 
 
 // view engine setup
@@ -60,7 +59,7 @@ app.use(function(req, res, next){
 })
 
 app.use('/index', indexRouter)
-//app.use('/users', usersRouter) //cuando se solicite cualquier recurso, el mismo va a ser atendido por el modulo creado
+app.use('/users', usersRouter) //cuando se solicite cualquier recurso, el mismo va a ser atendido por el modulo creado
 //metodo use que pertenece a express --> en app.js van unicamente los prefijos. 
 //app.use('/products', productsRouter)
 //el metodo use() recibe dos parametros, siendo el primero un string que seria el nombre del recurso. 

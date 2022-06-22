@@ -4,9 +4,7 @@ let indexController = require('../controladores/indexController.js')
 
 
 router.get('/', indexController.home)
-
-//router.get('/', indexController)
-//router.get('/loged', indexController)
+router.get('/search', indexController.search);
 
 
 module.exports = router;
