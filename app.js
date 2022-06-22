@@ -25,6 +25,7 @@ const path = require('path');
 //const usersRouter = require('./routes/users') //aqui requiero  el archivo de ruteo que se va a encargar
 // de manejar los recurso solicitados posteriormente
 const productsRouter =require('./routes/products');
+const indexRouter = require('./routes/index')
 
 var app = express();
 const session = require('express-session');
@@ -45,7 +46,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/', indexRouter)
+app.use('/', indexRouter)
 //app.use('/users', usersRouter) //cuando se solicite cualquier recurso, el mismo va a ser atendido por el modulo creado
 //metodo use que pertenece a express --> en app.js van unicamente los prefijos. 
 app.use('/products', productsRouter)

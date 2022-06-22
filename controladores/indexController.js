@@ -5,37 +5,10 @@ const productos = db.Productos
 const indexController = {
  
     home: (req, res) => {
-        db.Productos.findAll({
-            include:[{
-                association: 'usuarios_productos'
-            }, {
-                association: 'Comentarios',
-                include: {
-                    association: 'comentarios_productos'
-                }
-            }
-            ],
-            order: [
-                ['fecha_creacion','DESC']
-
-            ],
-            limit: 20
-        })
-        .then((result) =>{
-            console.log(result);
-            return res.render ('index',{
-                datos: result  //no termino de entender a que hacer referencia "datos"
-           });
-        })
-        .catch ((error) =>{
-           console.log(error);
-        })
-    }
-
-
+      return res.render('index') 
 
 }
-
+}
 module.exports = indexController
 
 

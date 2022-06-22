@@ -1,7 +1,6 @@
-const { sequelize } = require(".");
 
 module.exports = (sequelize, dataTypes) => {
-
+    let alias = "Comentario";
     let cols = {
         id: {
             type: dataTypes.INTEGER,
@@ -27,7 +26,7 @@ module.exports = (sequelize, dataTypes) => {
         underscored: true
     };
 
-    const Comentario = sequelize.define('Comentario', cols, config);
+    const Comentario = sequelize.define(alias, cols, config);
     
     Comentario.associate = (models) => {
         Comentario.belongsTo(models.Producto, {

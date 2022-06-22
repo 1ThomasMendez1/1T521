@@ -21,7 +21,7 @@ module.exports = function (sequelize, dataTypes){
         timestamps: true,
         underscored: true
     };
-   
+    const Seguidor  = sequelize.define("Seguidor", cols, config);
     Seguidor.associate = (models) => {
         Seguidor.belongsTo(models.Usuario, {
             as: "seguidoresUsuario", //se usa en las viustas
@@ -34,7 +34,7 @@ module.exports = function (sequelize, dataTypes){
 
     }
 
-    const Seguidor  = sequelize.define("Seguidor", cols, config);
+    
 
     return Seguidor;
 }

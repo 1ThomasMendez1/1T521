@@ -27,7 +27,7 @@ module.exports = (sequelize, dataTypes) => {
         underscored: true,
     }
 
-    let usuarios = sequelize.define("Usuario", cols, config)
+    let Usuario = sequelize.define("Usuario", cols, config)
 
     Usuario.associate = (models) => {
         Usuario.hasMany(models.Producto, {
