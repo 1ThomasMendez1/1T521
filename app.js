@@ -4,34 +4,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-// Acá declaro session
-/* 
-app.use(function(req, res, next){
-  res.locals.usuarioLogueado={
-    nombreDelUsuario:''
-  }
-  return next();
-})
-/* 
-res.cookie()
-*/
 
-/* 
-const multer = require('multer');
-const path = require('path');
-*/
 
-//const indexRouter = require('./routes/index.js')
-//const usersRouter = require('./routes/users') //aqui requiero  el archivo de ruteo que se va a encargar
-// de manejar los recurso solicitados posteriormente
-
-const productsRouter =require('./routes/products');
-const indexRouter = require('./routes/index')
+var indexRouter = require('./routes/index');
+var productRouter = require('./routes/products');
+var profileRouter = require('./routes/users');
 
 var app = express();
 const session = require('express-session');
 const db = require('./database/models')
-const users = db.usuarios
+const users = db.User
 
 
 // view engine setup
@@ -44,19 +26,46 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Configurando Session, mensaje secreto
 app.use(session({
-  secret:"MyApp",
+  secret:"pebeteHype",
   resave: false,
   saveUninitialized:true
 }));
 
-app.use('/', indexRouter)
+//Pasar los datos de session a locals
+app.use(function(req, res, next){
+  if(req.session.user != undefined){
+    res.locals.user = req.session.user
+  }
+  return next();
+})
+
+//Pregunto por la cookie
+app.use(function(req, res, next){
+  if(req.cookies.userId != undefined && req.session.user == undefined ){
+    let userId = req.cookies.userId;
+    //Tengo que ir a la db y hacer una consulta
+    users.findByPk(userId)
+      .then(function(user){
+          req.session.user = user.dataValues
+          res.locals.user = user.dataValues
+          return next();
+      })
+      .catch(error => console.log(error))
+  } else {
+    return next();
+  }
+    
+})
+
+app.use('/index', indexRouter)
 //app.use('/users', usersRouter) //cuando se solicite cualquier recurso, el mismo va a ser atendido por el modulo creado
 //metodo use que pertenece a express --> en app.js van unicamente los prefijos. 
-app.use('/products', productsRouter)
+//app.use('/products', productsRouter)
 //el metodo use() recibe dos parametros, siendo el primero un string que seria el nombre del recurso. 
 // y el segundo será el nombre de la constante en la que almacenemos el modulo del recurso
-
+//app.use('/users', profileRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
