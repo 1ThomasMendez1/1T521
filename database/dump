@@ -1,16 +1,15 @@
 
 
-CREATE SCHEMA dbTeamMessi;
+CREATE SCHEMA db_teammessi;
+USE db_teammessi;
 
-USE dbTeamMessi;
-
-
-CREATE TABLE usuarios (
+CREATE TABLE users (
 	id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	email VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     date DATE NOT NULL,
+    dni VARCHAR(8) NOT NULL,
 	image VARCHAR(255) NOT NULL,
     createdAt DATETIME not null,
     updatedAt DATETIME
@@ -19,72 +18,84 @@ CREATE TABLE usuarios (
 CREATE TABLE productos (
 	id INT UNSIGNED PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
     image VARCHAR(255) NOT NULL,
-    titulo VARCHAR(255) NOT NULL,
-    descripcion VARCHAR(255) NOT NULL,
-    fecha INT(4) UNSIGNED NOT NULL,
+    model VARCHAR(255) NOT NULL,
+    brand VARCHAR(255) NOT NULL,
+    year INT(4) UNSIGNED NOT NULL,
     color VARCHAR(255) NOT NULL,
+    size DECIMAL(2,1) NOT NULL,
     createdAt DATETIME not null,
     updatedAt DATETIME,
+    promedioRating FLOAT UNSIGNED DEFAULT 0,
     
-    FkUsuarioId INT UNSIGNED NOT NULL ,
-    FOREIGN KEY (FkUsuarioId) REFERENCES usuarios(id)
+    FkUserId INT UNSIGNED,
+    FOREIGN KEY (FkUserId) REFERENCES users(id)
 );
 
-CREATE TABLE comentarios (
+CREATE TABLE comments (
 	id INT UNSIGNED PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
     text varchar(255) NOT NULL,
-    FkProductosId INT UNSIGNED NOT NULL,
-    FkUsuarioId INT UNSIGNED NOT NULL,
+    rating FLOAT NOT NULL,
+    FkProductoId INT UNSIGNED NOT NULL,
+    FkUserId INT UNSIGNED NOT NULL,
     createdAt DATETIME not null,
     updatedAt DATETIME,
 
-    FOREIGN KEY (FkProductosId) REFERENCES productos(id),
-    FOREIGN KEY (FkUsuarioId) REFERENCES usuarios(id)
+    FOREIGN KEY (FkProductoId) REFERENCES productos(id),
+    FOREIGN KEY (FkUserId) REFERENCES users(id)
 );
 
-CREATE TABLE seguidores (
+CREATE TABLE usersFollowers (
 	id INT UNSIGNED PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
-    FkUsuarioId INT UNSIGNED NOT NULL,
-    FkSeguidorId INT UNSIGNED NOT NULL,
+    FkUserId INT UNSIGNED NOT NULL,
+    FkFollowerId INT UNSIGNED NOT NULL,
     
-    FOREIGN KEY (FkUsuarioId) REFERENCES usuarios(id),
-	FOREIGN KEY (FkSeguidorId) REFERENCES usuarios(id)
+    FOREIGN KEY (FkUserId) REFERENCES users(id),
+	FOREIGN KEY (FkFollowerId) REFERENCES users(id)
 );
 
-INSERT INTO usuarios (id,email,username,password) VALUES ('2','fvarela@udesa.edu.ar','thomasmendez','pipe123'),('3','vareltta@udesa.edu.ar','bautisp','thom123'),('4','bautista@gmail.com','enzocopetti','bau123');
+
+INSERT INTO users (email, username, password, date, dni, image, createdAt)
+VALUES 
+('tmendez@gmail.com', 'thomas', '34532', '2000-11-05', '44323456', '/images/users/2.jpg', curdate()),
+('bauti@hotmail.com', 'bauti', 'abcde', '2001-10-15','94632744','/images/users/1.jpg', curdate()),
+('pipe@gmail.com', 'pipe', 'pipe', '2003-015-27','43225632','/images/users/4.jpg', curdate()),
+('enzocopetti@gmail.com', 'cope', 'copegol', '2002-12-14','44729419','/images/users/1.jpg', curdate()),
+('anibalmoreno@gmail.com', 'animalmoreno', 'con9', '2000-1-1','45454689','/images/users/2.jpg', curdate()),
+('ecardona@gmail.com', 'edwin', 'racing', '2004-08-09','99999998','/images/users/3.jpg', curdate()),
+('ivanpillud@gmail.com', 'pillud', 'ivancapo', '2000-07-15','94632744','/images/users/1.jpg', curdate()),
+('chanca@gmail.com', 'chanca', 'chancalayed', '2005-1-20','44123456','/images/users/2.jpg', curdate()),
+('johancarbo@gmail.com', 'carbonero', 'laacade', '2007-05-09','94632744','/images/users/3.jpg', curdate()),
+('maxiromero@gmail.com', 'romerito', 'romegol', '2001-10-15','45654321','/images/users/1.jpg', curdate());
+
+INSERT INTO productos (image, model, brand, year, color, size, createdAt, FkUserId)
+VALUES ('midBlazer.webp', 'Air jordan', 'Nike', 2001, 'azul', 5.1, curdate(), 1),
+('airJordanDNA.jpg', 'Air force', 'Adidas', 2024, 'rojo', 6.3, curdate(), 2),
+('midBlazer.webp', 'Croc', 'Telefonica', 2027, 'violeta', 6.2, curdate(), 1),
+('midBlazer.webp', 'Superfly', 'Telefonica', 2027, 'negro', 6.2, curdate(), 1),
+('yeezyBoost.jpg', 'Mid Blazer', 'Telefonica', 2027, 'blanco', 6.2, curdate(), 1),
+('yeezyBoost700', 'Yeezy Boost 700', 'Telefonica', 2027, 'rojo', 6.2, curdate(), 1),
+('superfly.jpg', 'Adiddas Ozweego', 'Telefonica', 2027, 'azul', 6.2, curdate(), 1),
+('ozweegoAdiddas.webp', 'Air Jordan 1', 'Telefonica', 2027, 'marron', 6.2, curdate(), 1),
+('midBlazer.webp', 'Air Jordan DNA', 'Telefonica', 2027, 'negro', 6.2, curdate(), 1),
+('airJordanXXXI.jpg', 'Mid Blazer ', 'Telefonica', 2027, 'rosa', 6.2, curdate(), 1),
+('airJordanDNA.jpg', 'Superfly', 'Telefonica', 2027, 'verde', 6.2, curdate(), 1),
+('airJordan1-1986.jpg', 'Air Jordan 1', 'Telefonica', 2027, 'rojo', 6.2, curdate(), 1),
+('yeezyBoost.jpg', 'Yeezy Boost', 'Telefonica', 2027, 'azul', 6.2, curdate(), 1);
 
 
-INSERT INTO productos (id,FkUsuarioId,titulo,descripcion,fecha,image)
-VALUES( '1','3','Air Jordan 1','El primer modelo de la colección y seguramente el más popular. Llevaron el sobrenombre de «Notorious» y convirtieron a Michael Jordan en Rookie of the Year','22/05/2021',''),
-('2','3','Air Jordan 35 DNA','Un homenaje a los colores clásicos de las Jordan 5, de ahí el sobrenombre de DNA','24/7/2020',''),
-('3','4','Air Jordan XXXI','Son un reboot de las Air Jordan 1, una reinterpretación del primer modelo','22/1/2022',''),
-('4','2','Yeezy Boost 350','Es un modelo ultramoderno que conserva los elementos que hacen de esta zapatilla una de las más populares del momento, y viene acompañada con colores contrastados y atractivos, que generalmente suelen ser muy exclusivos','23/3/2022',''),
-('5','4','Yeezy Boost 700','es un modelo inspirado en los tenis para correr con una suela gruesa. También tienen una combinación de materiales en la parte superior, lengüeta y cuello acolchados, amortiguación Boost y una suela de goma','12/4/2020',''),
-('6','2','Nike Air Force Paradise','Las Air Force de toda la vida pero diseñadas por Nike y G-Dragon de la banda Big Bang','5/12/2020',''),
-('7','4','Jordan Superfly','Estas zapatillas cuentan con la última revolución en amortiguación de baloncesto: espuma Nike React ultrarreactiva diseñada para jugar mejor y durante más tiempo','3/12/2020',''),
-('8','2','Nike Air Huarache','Confeccionado para obtener ultra comodidad en cada pisada, con entresuela de espuma suave brindando ligereza y capellada de malla combinado con sintético','15/10/2021',''),
-('9','4','Adiddas Ozweego','Las zapatillas Ozweego se inspiran en los 90 para crear un estilo innovador. Estas zapatillas reinventan la OZWEEGO 3 de 1988 y la adaptan al presente. El resultado es un diseño ligero y cómodo equipado con la tecnología adiPRENE para ofrecer la máxima comodidad','17/11/2021',''),
-('10','3','Nike Mid Blazer Vintage 77','Nike Blazer Mid 77 SE toma el estilo clásico de Nike Básquetbol. Sus diseños exquisitos de gamuza, el diseño Swoosh retro y el cuello acolchado lo convierten en un calzado básico moderno','2/7/2021','');
+INSERT INTO comments (text,rating,FkProductoId,FkUserId,createdAt)
+VALUES ("Muy bueno",10,1,1,curdate()),
+("No me gusto",1,1,2,curdate()),
+("No cumplio",0.5,1,1,curdate()),
+("Buenardo",2,3,1,curdate()),
+("EPICOOO AMIGO",10,1,3,curdate());
 
-INSERT INTO comentarios (text,FkProductosId,FkUsuarioId)
-VALUES('altaaaas','1','2'),
-('precio?','2','3'),
-('mmm normalitas','4','3'),
-('queee locura de zapas','6','3'),
-('las mejores zapatillas de la historia','8','4'),
-('se vuelan amigo','10','2'),
-('mis favoritas lejos','7','2'),
-('son hermosas','2','4'),
-('uffff locura','1','3'),
-('feisimas','2','2');
-
-INSERT INTO seguidores (id,FkUsuarioId,FkSeguidorId)
-VALUES('1','2','3'),
-('2','2','4'),
-('3','3','2'),
-('4','3','4'),
-('5','2','3');
-
+INSERT INTO usersFollowers (FkUserId,FkFollowerId)
+VALUES(1,2),
+(2,1),
+(3,3),
+(3,1),
+(1,3);
 
 ALTER TABLE `dbteammessi`.`productos` 
 DROP FOREIGN KEY `productos_ibfk_1`;
