@@ -50,7 +50,7 @@ app.use(session({
   saveUninitialized:true
 }));
 
-app.use('/index', indexRouter)
+app.use('/', indexRouter)
 //app.use('/users', usersRouter) //cuando se solicite cualquier recurso, el mismo va a ser atendido por el modulo creado
 //metodo use que pertenece a express --> en app.js van unicamente los prefijos. 
 app.use('/products', productsRouter)
