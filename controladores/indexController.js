@@ -9,7 +9,7 @@ const indexController = {
             include:[{
                 association: 'usuarios_productos'
             }, {
-                association: 'comentarios',
+                association: 'Comentarios',
                 include: {
                     association: 'comentarios_productos'
                 }
