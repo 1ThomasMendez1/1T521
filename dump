@@ -1,0 +1,74 @@
+
+
+CREATE SCHEMA db_teammessi;
+USE db_teammessi;
+
+CREATE TABLE users (
+	id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	email VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    date DATE NOT NULL,
+    dni VARCHAR(8) NOT NULL,
+	image VARCHAR(255) NOT NULL,
+    createdAt DATETIME not null,
+    updatedAt DATETIME
+);
+
+CREATE TABLE productos (
+	id INT UNSIGNED PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
+    image VARCHAR(255) NOT NULL,
+    model VARCHAR(255) NOT NULL,
+    brand VARCHAR(255) NOT NULL,
+    year INT(4) UNSIGNED NOT NULL,
+    color VARCHAR(255) NOT NULL,
+    size DECIMAL(2,1) NOT NULL,
+    createdAt DATETIME not null,
+    updatedAt DATETIME,
+    promedioRating FLOAT UNSIGNED DEFAULT 0,
+    
+    FkUserId INT UNSIGNED,
+    FOREIGN KEY (FkUserId) REFERENCES users(id)
+);
+
+CREATE TABLE comments (
+	id INT UNSIGNED PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
+    text varchar(255) NOT NULL,
+    rating FLOAT NOT NULL,
+    FkProductoId INT UNSIGNED NOT NULL,
+    FkUserId INT UNSIGNED NOT NULL,
+    createdAt DATETIME not null,
+    updatedAt DATETIME,
+
+    FOREIGN KEY (FkProductoId) REFERENCES productos(id),
+    FOREIGN KEY (FkUserId) REFERENCES users(id)
+);
+
+CREATE TABLE usersFollowers (
+	id INT UNSIGNED PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
+    FkUserId INT UNSIGNED NOT NULL,
+    FkFollowerId INT UNSIGNED NOT NULL,
+    
+    FOREIGN KEY (FkUserId) REFERENCES users(id),
+	FOREIGN KEY (FkFollowerId) REFERENCES users(id)
+);
+INSERT INTO users (email, username, password, date, dni, image, createdAt)
+VALUES 
+('tmendez@gmail.com', 'thomas', '34532', '2000-11-05', '44323456', '/images/users/2.png', curdate()),
+('bauti@hotmail.com', 'bauti', 'abcde', '2001-10-15','94632744','/images/users/1.png', curdate()),
+('pipe@gmail.com', 'pipe', 'pipe', '2003-015-27','43225632','/images/users/4.png', curdate());
+
+
+
+INSERT INTO productos (image, model, brand, year, color, size, createdAt, FkUserId)
+VALUES ('1.jpeg', 'Air jordan', 'Nike', 2001, 'azul', 5.1, curdate(), 1),
+('2.jpeg', 'Air force', 'Adidas', 2024, 'rojo', 6.3, curdate(), 2),
+('3.jpeg', 'Croc', 'Telefonica', 2027, 'violeta', 6.2, curdate(), 1);
+
+
+INSERT INTO comments (text,rating,FkProductoId,FkUserId,createdAt)
+VALUES ("Muy bueno",10,1,1,curdate()),
+("No me gusto",1,1,2,curdate()),
+("No cumplio",0.5,1,1,curdate());
+
+    
