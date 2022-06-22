@@ -2,8 +2,7 @@ const db = require("../database/models"); //Requiero los modulos de la base de d
 const Producto = require("../database/models/Producto");
 const op = db.Sequelize.Op //Requiero los operadores Sequelize y los almaceno en OP.
 const productos = db.Producto
-const usuarios = db.User
-const comentarios = db.Comment
+
 
 
 
@@ -28,9 +27,59 @@ const indexController = {
        })
       })
 },
+search: function(req,res) {
+    productos.findAll ({
+        include:[{association: 'owner'}, {association: 'comentarios'}],
+        where: [{model: {[op.like]: '%' + req.query.search + '%'}}]
+    })
+
+    .then(function (zapatillas){
+        productos.findAll ({
+            include:[{association: 'owner'}, {association: 'comentarios'}],
+            where: [{brand: {[op.like]: '%' + req.query.search + '%'}}]
+        })
+        .then(function(zapatillas2){
+            for(let i = 0; i < zapatillas2.length; i++){
+                zapatillas.push(zapatillas2[i])
+            }
+            productos.findAll ({
+                include:[{association: 'owner'}, {association: 'comentarios'}],
+                where: [{year: {[op.like]: '%' + req.query.search + '%'}}] 
+            })
+            .then(function(zapatillas3){
+                for(let i = 0; i < zapatillas3.length; i++){
+                    zapatillas.push(zapatillas3[i])
+                }
+                productos.findAll ({
+                    include:[{association: 'owner'}, {association: 'comentarios'}],
+                    where: [{color: {[op.like]: '%' + req.query.search + '%'}}] 
+                })
 
 
+                    .then(function(zapatillas5){
+                        for(let i = 0; i < zapatillas5.length; i++){
+                            zapatillas.push(zapatillas5[i])
+                        }
+                        productos.findAll ({
+                            include:[{association: 'owner'}, {association: 'comentarios'}],
+                            where: [{size: {[op.like]: '%' + req.query.search + '%'}}]
+                        })
+                        .then(function(zapatillas6){
+                            for(let i = 0; i < zapatillas6.length; i++){
+                                zapatillas.push(zapatillas6[i])
+                            }
+                            return res.render('search-results', {info: zapatillas, query: req.query.search});
+                        })
+                    })
+                })
+            })
+        })
+           
+    .catch(error => console.log('El error: ' + error))
+  },
+  
 }
+
 module.exports = indexController
 
 
