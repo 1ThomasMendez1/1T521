@@ -1,5 +1,4 @@
 const db = require("../database/models"); //Requiero los modulos de la base de datos, y los almaceno en db
-const Producto = require("../database/models/Producto");
 const op = db.Sequelize.Op //Requiero los operadores Sequelize y los almaceno en OP.
 const productos = db.Producto
 
