@@ -1,5 +1,3 @@
-
-
 CREATE SCHEMA db_teammessi;
 USE db_teammessi;
 
@@ -52,23 +50,49 @@ CREATE TABLE usersFollowers (
     FOREIGN KEY (FkUserId) REFERENCES users(id),
 	FOREIGN KEY (FkFollowerId) REFERENCES users(id)
 );
+
+
 INSERT INTO users (email, username, password, date, dni, image, createdAt)
 VALUES 
-('tmendez@gmail.com', 'thomas', '34532', '2000-11-05', '44323456', '/images/users/2.png', curdate()),
-('bauti@hotmail.com', 'bauti', 'abcde', '2001-10-15','94632744','/images/users/1.png', curdate()),
-('pipe@gmail.com', 'pipe', 'pipe', '2003-015-27','43225632','/images/users/4.png', curdate());
-
-
+('tmendez@gmail.com', 'thomas', '34532', '2000-11-05', '44323456', '/images/users/2.jpg', curdate()),
+('bauti@hotmail.com', 'bauti', 'abcde', '2001-10-15','94632744','/images/users/1.jpg', curdate()),
+('pipe@gmail.com', 'pipe', 'pipe', '2003-015-27','43225632','/images/users/4.jpg', curdate()),
+('enzocopetti@gmail.com', 'cope', 'copegol', '2002-12-14','44729419','/images/users/1.jpg', curdate()),
+('anibalmoreno@gmail.com', 'animalmoreno', 'con9', '2000-1-1','45454689','/images/users/2.jpg', curdate()),
+('ecardona@gmail.com', 'edwin', 'racing', '2004-08-09','99999998','/images/users/3.jpg', curdate()),
+('ivanpillud@gmail.com', 'pillud', 'ivancapo', '2000-07-15','94632744','/images/users/1.jpg', curdate()),
+('chanca@gmail.com', 'chanca', 'chancalayed', '2005-1-20','44123456','/images/users/2.jpg', curdate()),
+('johancarbo@gmail.com', 'carbonero', 'laacade', '2007-05-09','94632744','/images/users/3.jpg', curdate()),
+('maxiromero@gmail.com', 'romerito', 'romegol', '2001-10-15','45654321','/images/users/1.jpg', curdate());
 
 INSERT INTO productos (image, model, brand, year, color, size, createdAt, FkUserId)
-VALUES ('1.jpeg', 'Air jordan', 'Nike', 2001, 'azul', 5.1, curdate(), 1),
-('2.jpeg', 'Air force', 'Adidas', 2024, 'rojo', 6.3, curdate(), 2),
-('3.jpeg', 'Croc', 'Telefonica', 2027, 'violeta', 6.2, curdate(), 1);
+VALUES ('midBlazer.webp', 'Air jordan', 'Nike', 2001, 'azul', 5.1, curdate(), 1),
+('airJordanDNA.jpg', 'Air force', 'Adidas', 2024, 'rojo', 6.3, curdate(), 2),
+('midBlazer.webp', 'Croc', 'Telefonica', 2027, 'violeta', 6.2, curdate(), 1),
+('midBlazer.webp', 'Superfly', 'Telefonica', 2027, 'negro', 6.2, curdate(), 1),
+('yeezyBoost.jpg', 'Mid Blazer', 'Telefonica', 2027, 'blanco', 6.2, curdate(), 1),
+('yeezyBoost700', 'Yeezy Boost 700', 'Telefonica', 2027, 'rojo', 6.2, curdate(), 1),
+('superfly.jpg', 'Adiddas Ozweego', 'Telefonica', 2027, 'azul', 6.2, curdate(), 1),
+('ozweegoAdiddas.webp', 'Air Jordan 1', 'Telefonica', 2027, 'marron', 6.2, curdate(), 1),
+('midBlazer.webp', 'Air Jordan DNA', 'Telefonica', 2027, 'negro', 6.2, curdate(), 1),
+('airJordanXXXI.jpg', 'Mid Blazer ', 'Telefonica', 2027, 'rosa', 6.2, curdate(), 1),
+('airJordanDNA.jpg', 'Superfly', 'Telefonica', 2027, 'verde', 6.2, curdate(), 1),
+('airJordan1-1986.jpg', 'Air Jordan 1', 'Telefonica', 2027, 'rojo', 6.2, curdate(), 1),
+('yeezyBoost.jpg', 'Yeezy Boost', 'Telefonica', 2027, 'azul', 6.2, curdate(), 1);
 
 
 INSERT INTO comments (text,rating,FkProductoId,FkUserId,createdAt)
 VALUES ("Muy bueno",10,1,1,curdate()),
 ("No me gusto",1,1,2,curdate()),
-("No cumplio",0.5,1,1,curdate());
+("No cumplio",0.5,1,1,curdate()),
+("Buenardo",2,3,1,curdate()),
+("EPICOOO AMIGO",10,1,3,curdate());
+
+INSERT INTO usersFollowers (FkUserId,FkFollowerId)
+VALUES(1,2),
+(2,1),
+(3,3),
+(3,1),
+(1,3);
 
     
