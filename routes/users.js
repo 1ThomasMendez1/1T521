@@ -23,14 +23,9 @@ router.get('/register', usersController.register );
 router.get('/login', usersController.login)
 router.post('/register', upload.single('imgPerfil') , usersController.storeProfile)
 
-
-
-
-
-
-
-
-
+router.get('/login', usersController.login);
+router.post('/login' , usersController.procesarLogin);
+router.post('/logout' , usersController.logout);
 
 
 

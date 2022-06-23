@@ -5,7 +5,11 @@
 
 	<body>
 		<!-- Header -->
-		<%- include('parciales/header') %>
+		<% if (locals.user != undefined) { %>
+			<%- include('parciales/headerLog', {info: locals.user}) %>
+		  <% }else { %>
+			<%- include('parciales/header') %>
+		  <% } %> 
 			<!-- /Header -->
 
 			<!-- product detail -->
