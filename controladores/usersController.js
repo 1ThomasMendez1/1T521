@@ -1,7 +1,7 @@
 
 const db = require('../database/models')
 const productos = db.Producto
-const user = db.User
+const users = db.User
 const comments = db.Comment
 const userFollowers = db.UserFollower
 const op = db.Sequelize.Op;
@@ -23,53 +23,48 @@ const usersController = {
        return res.render('login')
     },
 
-    procesarLogin : function(req,res) {
-        let info = req.body;
+    signIn: function(req, res){
+        console.log("entre al sign in");
+        users.findOne({
+            where: [{email: req.body.email}]
+        })
+            .then(function(user){
+                //si trajo un usuario hay que chequear la contraseña con compareSync()
+                //Si las contraseñas no coincuiden mandamos mensaje de error.
+                console.log(req.body)
+                console.log('el usuario es: ' + user);
 
-        let errors = {};
-
-       if (info.mail == "") {
-        errors.message = "El input de email esta vacio";
-            res.locals.errors = errors;
-            return res.render('login');
-    
-       } else if (info.password == "") {
-        errors.message = "El input de password esta vacio";
-        res.locals.errors = errors;
-        return res.render('login')
-
-       } else {
-        user.findOne({
-            where : [{ email :  info.email}]
-        }).then((result) => {
-            if (result != null) {
-                let claveCorrecta = bcryptjs.compareSync(info.password  , result.password )
-                if (claveCorrecta) {
-                    req.session.user = result.dataValues;
-                    console.log(req.session.user);
-                    /* Evaluar si el checkbox esta en true o existe */
-
-                    if (req.body.remember != undefined) {
-                        res.cookie('userId', req.session.user.id, { maxAge : 1000 * 60 * 5})
+                if(user){
+                    console.log('entro al if(user)');
+                    if(bcrypt.compareSync(req.body.password, user.password)){
+                        //Si el usuario tildó recordarme creo la cookie
+                        if (req.body.remember) {
+                            res.cookie('userId',user.dataValues.id,{maxAge: 1000*60*100} );
+                        } 
+                        console.log('coinciden');
+                        req.session.user = user.dataValues;
+                        res.locals.errores = ''
+                        console.log('los errores son' + res.locals.errores);
+                        return res.redirect('/profile/' + user.dataValues.id)
+                    } else {
+                        res.locals.errores = {mensaje:"la password no concide"};
+                        console.log('los errores son' + res.locals.errores);
+                        return res.render('login')
                     }
-                    return res.redirect("/index")
-                } else {
-                    /* Este paso se ejecuta por cada validacion que queramos */
-                    errors.message = "La clave es incorrecta"
-                    res.locals.errors = errors;
-                    return res.render('login');
-                }
-                
-            } else {
-                /* Este paso se ejecuta por cada validacion que queramos */
-                errors.message = "No existe el email " + info.email
-                res.locals.errors = errors;
-                return res.render('login');
-            }
-        });
-       }
-    }
-}
 
+                } else{
+                    res.locals.errores ={mensaje:"El email es incorrecto"} 
+                    console.log(res.locals.errores);
+                    return res.render('login')
+                }
+            })
+            .catch(error => console.log(error))
+        },
+        logout : (req, res) => {
+            req.session.destroy();
+            res.clearCookie("userId")
+            return res.redirect("/index",);
+        },
+}
 
 module.exports = usersController;

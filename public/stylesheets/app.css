@@ -24,12 +24,13 @@ body {
   min-height: 100vh;
   margin: 0;
   font-size: 10px;
+  
 }
 
 body {
   font-family: var(--base-font-family);
   font-weight: 300;
-  background-color: var(--light-gray);
+  background-color: var(--light-white);
 }
 
 ul,
@@ -168,6 +169,8 @@ hr {
   margin-bottom: 30px;
 }
 
+
+
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
@@ -176,11 +179,13 @@ hr {
 }
 
 .product-box {
+  flex-wrap: wrap;
   background-color: #ffffff;
   border-radius: 5px;
   overflow: hidden;
   transition: 300ms;
   margin: 20px 0;
+  box-shadow: 10px 10px 10px 10px grey
 }
 
 .product-box a {
@@ -582,14 +587,14 @@ textarea.form-input {
 }
 
 .title {
-  margin-bottom: 35px;
+  margin-bottom: 15px;
   background-color: lightgrey;
   padding: 20px;
   border-radius: 5px;
 }
 
 .article-login {
-  margin-bottom: 35px;
+  margin-bottom: 15px;
   background-color: lightgrey;
   padding: 20px;
   border-radius: 5px;
@@ -688,6 +693,7 @@ textarea.form-input {
   background-color: lightgrey;
   padding: 22px;
   border-radius: 20px;
+  box-shadow: 10px #000000 ;
   width: fit-content;
   font-size: 22px;
   color: #000000;

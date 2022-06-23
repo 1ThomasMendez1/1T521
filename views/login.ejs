@@ -13,15 +13,16 @@
 
 		<main>
 
-    
-			<% if(locals.erroresLogin){ %>
-			  <p class="mensajeError" style="color: red;"> <%= erroresLogin.message %>
-			  </p>
-		  <% } %>
+			<% if (locals.errores) { %>
+				<p><%=locals.errores.mensaje %> </p>
+			<% } %>
 		
 			<section class="login-section">
 				<form class="login-form" action="/users/login" method="POST" name="login">
 					<article class="title"> <i class="fas fa-sign-in-alt"></i> Login  <i class="fas fa-sign-in-alt"></i></article>
+					<% if (locals.errores) { %>
+						<p><%=locals.errores.mensaje %> </p>
+					<% } %>
 					<article class="article-login">
 						<input id="place-holder" class="input" type="email" name="email" placeholder="Usuario" />
 					</article>

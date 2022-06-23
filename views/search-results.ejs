@@ -6,11 +6,44 @@
 
 <body>
 	<!-- Header -->
-	<%- include('parciales/header') %>
+	<% if(locals.user){ %>
+        <%- include('./parciales/headerLog', {info: locals.user}) %>
+      <% } else {%>
+        <%- include('./parciales/header') %>
+      <% }%>
 	<!-- /Header -->
 
 	<!-- Novedades -->
-	<h1>Buscador</h1>
+	<% if (info.length != 0) { %>
+		<div class="col-12">
+			<h2 class="products-title">Resultados de búsqueda para: "<i><%= query %></i>"</h2>
+		</div>
+
+		<% for(let i = 0; i < info.length; i++) { %> 
+			<div class="col-12 col-sm-6 col-lg-3">
+				<section class="product-box">
+					<a href="/product/<%= info[i].id %>">
+						<figure class="product-box_image">
+							<img src="/images/products/<%= info[i].image %>" alt="foto <%= info[i].model %>">
+						</figure>
+						<article class="product-box_data">
+							<h2> <%= info[i].model %> </h2>
+							<p><%= `Marca: ${info[i].brand} - Año: ${info[i].year} - Color: ${info[i].color} - Talle: ${info[i].size}` %> </p>
+							<p>Comentarios: <%= info[i].comentarios.length %>  </p>
+							<div class="username-pfp">
+								<img class="userpfp" src="/<%= info[i].owner.image %> " alt="foto de perfil de <%= info[i].owner.username %>">
+								<strong> <a href="/profile/<%= info[i].owner.id %>"> <%= info[i].owner.username %>  </a> </strong>
+							</div>
+						</article>
+					</a>
+				</section>
+			</div>
+		<% } %> 
+	<% } else { %> 
+		<h2 class="products-title">No se encontraron resultados para: "<i><%= query %></i>"</h2>
+	<% } %> 
+</div>
+</div>
 
 
 	<!-- footer -->
