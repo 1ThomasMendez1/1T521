@@ -29,6 +29,8 @@ router.post('/logout' , usersController.logout);
 
 router.get('/profile/:id', usersController.perfil);
 
+router.post('')
+
 
 //router.get('/profile-edit', );
 //router.get('/product-add', )

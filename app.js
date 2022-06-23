@@ -11,6 +11,7 @@ const users = db.User
 
 var indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
+let productsRouter = require('./routes/products')
 
 
 
@@ -61,7 +62,7 @@ app.use(function(req, res, next){
 
 app.use('/index', indexRouter)
 app.use('/users', usersRouter) 
-
+app.use('/products', productsRouter)
 
 //cuando se solicite cualquier recurso, el mismo va a ser atendido por el modulo creado
 //metodo use que pertenece a express --> en app.js van unicamente los prefijos. 

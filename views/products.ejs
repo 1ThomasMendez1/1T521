@@ -13,37 +13,82 @@
 			<!-- /Header -->
 
 			<!-- product detail -->
-
+<main class="producto">
 			<div class="container products-wrapper">
 				<div class="d-flex align-items-center">
-					<h2 class="products-title">Air Jordan DNA</h2>
+					<h2 class="products-title"><%= info.model %></h2>
 				</div>
-
-				<div class="product-detail">
-					<div class="row">
-						<article class="col-12 col-lg-8 product-detail-info">
-							<img src="../images/products/airJordanDNA.jpg" alt="" class="product-detail-img">
-							<p class="product-detail-description">
-								Air Jordan DNA</p>
-						</article>
-
-						<article class="comentarios">
-							<h3>Comentarios</h3>
-							<p class="comment"><%= listaComentarios[0].user %>: <%= listaComentarios[0].contenido %></p>
-							<p class="comment"><%= listaComentarios[0].user %>: <%= listaComentarios[0].contenido %></p>
-						</article>
-
-
-						<hr>
-					</div>
-				</div>
+				<p class="product-detail-description">
+					<% if(locals.user && user.id==info.owner.id){ %>
+					<a href="/product/edit/<%=info.id%>">Editar</a>
+					
+					<a href="/product/delete/<%=info.id%>">Borrar</a>
+					<% }%>
+				</p>
 			</div>
-			
+			<div class="product-detail">
+				<div class="row">
+					<article class="col-12 col-lg-8 product-detail-info">
+						<img src="/images/products/<%= info.image %> " alt="<%= info.model %>" class="product-detail-img">
+						<p class="product-detail-description">
+							<%= `Modelo: ${info.model} Marca: ${info.brand} - Año: ${info.year} - Color: ${info.color} - Talle: ${info.size} ` %>
+						</p>
+					</article>
+					<div class="col-12 col-lg-4">
+						<section class="comments">
+							<article class="username-pfp">
+								<img class="userpfp" src="<%= info.owner.image %> " alt="foto de perfil de <%= info.owner.username %>">
+								<strong> <a href="/profile/<%= info.owner.id %>"> <%= info.owner.username %>  </a> </strong>
+							</article>
+
+							<% if(comentadores[0] != undefined) { %> 
+								<p id="titulo-comments"><strong>Comentarios:</strong></p>
+								<% for(let i =0; i< comentadores.length; i++) { %>
+									<article>
+										<a href="/profile/<%= comentadores[i].id %>">	<img src="<%= comentadores[i].image %>  " alt=""> </a>
+										<div class="data">
+											<p class="user">
+											<strong> <a href="/profile/<%=info.comentarios[i].FkUserId%> "> <%= comentadores[i].username %>  </a> </strong>
+											<%= info.comentarios[i].text %>
+											</p>
+											<p id = "estrellas-<%=i%> ">
+											<% if (info.comentarios[i].rating == 0) { %>
+												<i class="far fa-star fa-3x"></i>
+											<% } else { %>
+												<% for(let count = 0; count < info.comentarios[i].rating; count++) { %> 
+													<% if(info.comentarios[i].rating - count > 0.5) { %> 
+														<i class="fas fa-star fa-3x"></i>
+													<% } else if (info.comentarios[i].rating - count == 0.5) { %> 
+														<i class="fas fa-star-half-alt fa-3x"></i>
+													<% } %> 
+												<% } %> 
+											<% } %>
+										</p>
+										
+										</div>
+									</article>
+								<% } %>
+							<% } else { %> 
+								<p id="titulo-comments"><strong>Este producto no tiene comentarios, comenta aca abajo!</strong></p>
+								<% console.log('no hay comentarios') %> 
+							<% } %>	
+
+							<form class="form" action="storeComment" method="POST">
+								<input class="form-input" name="text" type="text" placeholder="Agregar comentario">
+								<input type="hidden" name="rating" id="estrellas-rating-input">
+								<input name="FkUserId" class = "border form-control" type="hidden" id="formGroupExampleInput" value="<%= locals.user.id %>">
+								<input name="FkProductId" class = "border form-control" type="hidden" id="formGroupExampleInput" value="<%= id %>">
+								<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+							</form>
+							
+						</section>
+				
+					</main>
 
 
+
+	</body>
 			<!-- footer -->
 			<%- include('parciales/footer') %>
 		    <!-- /footer -->
-	</body>
-
 	</html>
