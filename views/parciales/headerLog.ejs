@@ -30,12 +30,12 @@
 			</ul>
 
 			<ul class="right-navbar">
-				<li><a href="/profile/<%= info.id %>">
+				<li><a href="users/profile/<%= info.id %>"> <!--user.info.id-->
 						<%= info.username %>  <i class="fas fa-user"></i>
 					</a>
 				</li>
 				<li>  <!-- creo un formulario para el logout-->
-					<form action="/profile/logout" method="post" name="logout">
+					<form action="/users/logout" method="post">
 						<button class="logout" type="submit">
 							Cerrar sesión <i class="fas fa-sign-in-alt"></i>
 						</button>

@@ -24,10 +24,6 @@
                 notNull: true,
                 type: DataTypes.DATE,
             },
-            dni:{
-                notNull: true,
-                type: DataTypes.INTEGER,
-            },
             image:{
                 notNull: true,
                 type: DataTypes.STRING,

@@ -20,17 +20,15 @@ let upload = multer({ storage:storage }) //configuramos una variable llamada upl
 
 //SUFIJOS //router es la variable que almacena la ejecucion y get el metodo http
 router.get('/register', usersController.register );
-router.get('/login', usersController.login)
+
 router.post('/register', upload.single('imgPerfil') , usersController.storeProfile)
 
 router.get('/login', usersController.login);
 router.post('/login' , usersController.procesarLogin);
 router.post('/logout' , usersController.logout);
 
+router.get('/profile/:id', usersController.perfil);
 
-
-//router.get('/login', usersController.login); 
-/////router.post('/login', usersController.procesarLogin); 
 
 //router.get('/profile-edit', );
 //router.get('/product-add', )

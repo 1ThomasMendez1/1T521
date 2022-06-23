@@ -7,7 +7,6 @@ CREATE TABLE users (
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     date DATE NOT NULL,
-    dni VARCHAR(8) NOT NULL,
 	image VARCHAR(255) NOT NULL,
     createdAt DATETIME not null,
     updatedAt DATETIME
@@ -52,18 +51,18 @@ CREATE TABLE usersFollowers (
 );
 
 
-INSERT INTO users (email, username, password, date, dni, image, createdAt)
+INSERT INTO users (email, username, password, date, image, createdAt)
 VALUES 
-('tmendez@gmail.com', 'thomas', '34532', '2000-11-05', '44323456', '/images/users/2.jpg', curdate()),
-('bauti@hotmail.com', 'bauti', 'abcde', '2001-10-15','94632744','/images/users/1.jpg', curdate()),
-('pipe@gmail.com', 'pipe', 'pipe', '2003-15-27','43225632','/images/users/4.jpg', curdate()),
-('enzocopetti@gmail.com', 'cope', 'copegol', '2002-12-14','44729419','/images/users/1.jpg', curdate()),
-('anibalmoreno@gmail.com', 'animalmoreno', 'con9', '2000-1-1','45454689','/images/users/2.jpg', curdate()),
-('ecardona@gmail.com', 'edwin', 'racing', '2004-08-09','99999998','/images/users/3.jpg', curdate()),
-('ivanpillud@gmail.com', 'pillud', 'ivancapo', '2000-07-15','94632744','/images/users/1.jpg', curdate()),
-('chanca@gmail.com', 'chanca', 'chancalayed', '2005-1-20','44123456','/images/users/2.jpg', curdate()),
-('johancarbo@gmail.com', 'carbonero', 'laacade', '2007-05-09','94632744','/images/users/3.jpg', curdate()),
-('maxiromero@gmail.com', 'romerito', 'romegol', '2001-10-15','45654321','/images/users/1.jpg', curdate());
+('tmendez@gmail.com', 'thomas', '34532', '2000-11-05', '/images/users/2.jpg', curdate()),
+('bauti@hotmail.com', 'bauti', 'abcde', '2001-10-15','/images/users/1.jpg', curdate()),
+('pipe@gmail.com', 'pipe', 'pipe', '2003-15-27','/images/users/4.jpg', curdate()),
+('enzocopetti@gmail.com', 'cope', 'copegol', '2002-12-14','/images/users/1.jpg', curdate()),
+('anibalmoreno@gmail.com', 'animalmoreno', 'con9', '2000-1-1','/images/users/2.jpg', curdate()),
+('ecardona@gmail.com', 'edwin', 'racing', '2004-08-09','/images/users/3.jpg', curdate()),
+('ivanpillud@gmail.com', 'pillud', 'ivancapo', '2000-07-15','/images/users/1.jpg', curdate()),
+('chanca@gmail.com', 'chanca', 'chancalayed', '2005-1-20','/images/users/2.jpg', curdate()),
+('johancarbo@gmail.com', 'carbonero', 'laacade', '2007-05-09','/images/users/3.jpg', curdate()),
+('maxiromero@gmail.com', 'romerito', 'romegol', '2001-10-15','/images/users/1.jpg', curdate());
 
 INSERT INTO productos (image, model, brand, year, color, size, createdAt, FkUserId)
 VALUES ('midBlazer.webp', 'Air jordan', 'Nike', 2001, 'azul', 5.1, curdate(), 1),
