@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- Include Head -->
+<%- include('./partials/head')  %> 
+
+<body>
+	<!-- Header -->
+	<% if (locals.user != undefined) { %>
+		<%- include('./partials/headerLogueado')  %> 
+<% } else{%>
+		<%- include('./partials/headerNoLogueado')  %> 
+<% } %> 
+	<!-- /Header -->
+
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Edit product</h2>
+			</div>
+		<!-- form para add product --> 
+
+		<div class="wrapper fadeInDown">
+			<div id="formContent">
+			  <!-- Tabs Titles -->
+			  <h2 class="active"> Edit <%= product.model  %>   </h2>
+
+			  <!-- Icon -->
+		  
+			  <form action="/products/edit/<%= product.id %>" method="POST" enctype="multipart/form-data">
+				<label for="model" class= "letraForm"> Zapatilla: </label>
+				<input type="text" name="model" placeholder= "name of the product" value=""> 
+				<hr>
+				<label for="description" class= "letraForm"> Descripcion: </label>
+				<input type="text" name="description" placeholder="description">
+				<hr>
+				<label for="photo" class= "letraForm"> Imagen: </label>
+				<input type="file" name="imgProduct" placeholder= "photo" value="">
+				<input name="users_id" value="<%=product.user.id%>" style="display: none">
+				<hr>
+				<input type="submit" class="fadeIn fourth" value="ADD">
+			  </form>
+	
+			</div>
+		  </div>
+			
+
+
+	<!-- footer -->
+	<%- include('./partials/footer')  %> 
+	<!-- /footer -->
+</body>
+
+</html>

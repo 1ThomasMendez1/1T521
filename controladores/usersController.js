@@ -69,30 +69,29 @@ const usersController = {
 
     storeProfile: function (req, res) {
         let info = req.body;
-        let email = users.findOne({ where: [{ email: info.email }] })
         let errors = {};
-        let filtro1 = { where: [{ email: req.body.email }] }
-        let filtro2 = { where: [{ username: req.body.name }] }
+        let filtro1 = {where: [{ email: req.body.email }]}
+
 
         if (info.name == "") {
             errors.message = "El input de nombre esta vacio";
             res.locals.errors = errors;
             return res.render('register')
 
-        } else if (info.email == "") {
+        } else if (info.email == ""){
             errors.message = "El input de email esta vacio";
             res.locals.errors = errors;
             return res.render('register')
 
-        } else if (info.password == "") {
+        }  else if (info.password == ""){
             errors.message = "El input de password esta vacio";
             res.locals.errors = errors;
             return res.render('register')
 
         } else if (info.password.length < 3) {
-            errors.message = "El input de password era menor de 3 caracteres"
-            res.locals.errors = errors;
-            return res.render('register')
+          errors.message = "El input de password era menor de 3 caracteres"
+          res.locals.errors = errors;
+          return res.render('register')
         } else if (info.date == '') {
             errors.message = "Fecha de nacimiento por favor"
             res.locals.errors = errors;
@@ -102,53 +101,33 @@ const usersController = {
             res.locals.errors = errors;
             return res.render('register')
         }
-        else {
+        else  { 
             users.findOne(filtro1)
-                .then(result => {
-                    if (result != undefined) {
-                        console.log(info)
-                        errors.message = "El mail ya existe";
-                        res.locals.errors = errors;
-                        return res.render('register');
+            .then(result => {
+                if (result != undefined){
+                    console.log(info)
+                    errors.message = "El mail ya existe";
+                    res.locals.errors = errors;
+                    return res.render('register');
+                } 
+
+
+                else {
+                    let usuario = {
+                        email: info.email,
+                        username: info.username,
+                        password: bcrypt.hashSync(info.password, 10),
+                        date: info.date,
+                        image: `/images/users/${req.file.filename}`,
+                        created_at: new Date(),
                     }
 
-                    else {
-                        let usuario = {
-                            email: info.email,
-                            username: info.username,
-                            password: bcrypt.hashSync(info.password, 10),
-                            date: info.date,
-                            image: `/images/users/${req.file.filename}`,
-                            created_at: new Date(),
-                        }
-                    }
-                })
-                .then(result => {
-                    if (result != undefined) {
-                        console.log(info)
-                        errors.message = "El mail ya existe";
-                        res.locals.errors = errors;
-                        return res.render('register');
-                    }
+                    users.create(usuario)
+                        .then(resultado => res.redirect("/users/login"))
+                        .catch(err => console.log(err));
 
-
-                    else {
-                        let usuario = {
-                            email: info.email,
-                            username: info.name,
-                            password: bcrypt.hashSync(info.password, 10),
-                            date: info.date,
-                            image: `/images/users/${info.imgPerfil}`,
-                            created_at: new Date(),
-                        }
-
-                        users.create(usuario)
-                            .then(usuario => {
-                                res.redirect("/users/login") })
-                            .catch(err => console.log(err));
-
-                    }
-                })
+                }
+            })
 
         }
     },

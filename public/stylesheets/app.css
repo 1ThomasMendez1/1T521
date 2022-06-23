@@ -329,8 +329,10 @@ hr {
 
 .product-detail-description {
   padding: 15px 15px 15px 40px;
-  font-size: 1.8em;
+  font-size: 35px;
+  text-align: center;
   line-height: 1.5;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .product-detail-price {
@@ -786,4 +788,12 @@ textarea.form-input {
   justify-content: center;
   border-radius: 100px;
   max-height: 100px;
+}
+
+.producto {
+display: flex;
+justify-content: center;
+display: block;
+
+
 }
