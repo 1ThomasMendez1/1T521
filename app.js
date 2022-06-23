@@ -15,6 +15,7 @@ let usersRouter = require('./routes/users');
 
 
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -59,7 +60,10 @@ app.use(function(req, res, next){
 })
 
 app.use('/index', indexRouter)
-app.use('/users', usersRouter) //cuando se solicite cualquier recurso, el mismo va a ser atendido por el modulo creado
+app.use('/users', usersRouter) 
+
+
+//cuando se solicite cualquier recurso, el mismo va a ser atendido por el modulo creado
 //metodo use que pertenece a express --> en app.js van unicamente los prefijos. 
 //app.use('/products', productsRouter)
 //el metodo use() recibe dos parametros, siendo el primero un string que seria el nombre del recurso. 
