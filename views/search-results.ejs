@@ -31,7 +31,7 @@
 							<p><%= `Marca: ${info[i].brand} - Año: ${info[i].year} - Color: ${info[i].color} - Talle: ${info[i].size}` %> </p>
 							<p>Comentarios: <%= info[i].comentarios.length %>  </p>
 							<div class="username-pfp">
-								<img class="userpfp" src="/<%= info[i].owner.image %> " alt="foto de perfil de <%= info[i].owner.username %>">
+								<img class="userpfp" src="<%= info[i].owner.image %> " alt="foto de perfil de <%= info[i].owner.username %>">
 								<strong> <a href="/profile/<%= info[i].owner.id %>"> <%= info[i].owner.username %>  </a> </strong>
 							</div>
 						</article>

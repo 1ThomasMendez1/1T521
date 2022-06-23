@@ -7,12 +7,11 @@ const productos = db.Producto
 
 const indexController = {
  
-    home: (req, res) => {
+    home: (req, res) => { //metodo
       productos.findAll ({
-          include : [{association: 'owner'}, {association: 'comentarios'}],
+          include : [{association: 'owner'}, {association: 'comentarios'}], //cada objeto literal es una relacion su valor es el mismo alias que asignamos a la relacion
           order : [['createdAt', 'DESC']],
-          limit: 4
-      })
+          limit: 4  })
       .then(function(zapatillas){
        productos.findAll ({
            include: [{association: 'owner'}, {association: 'comentarios'}],
@@ -22,20 +21,23 @@ const indexController = {
            for(let i = 0; i < zapatillas2.length; i++){
                zapatillas.push(zapatillas2[i])
            }
-           return res.render('index', {info: zapatillas })
+           return res.render('index', {info: zapatillas} )
+           
        })
+       
       })
 },
 search: function(req,res) {
     productos.findAll ({
         include:[{association: 'owner'}, {association: 'comentarios'}],
-        where: [{model: {[op.like]: '%' + req.query.search + '%'}}]
+        where: [{ model: {[op.like]: '%' + req.query.search + '%'}
+    }] //model refiere a la columna model de la base de datos, de esta forma tambien podriamos filtrar por usernmame por ejemplo
     })
 
     .then(function (zapatillas){
         productos.findAll ({
             include:[{association: 'owner'}, {association: 'comentarios'}],
-            where: [{brand: {[op.like]: '%' + req.query.search + '%'}}]
+            where: [{brand: {[op.like]: '%' + req.query.search + '%'}}] //operador or usar 
         })
         .then(function(zapatillas2){
             for(let i = 0; i < zapatillas2.length; i++){
@@ -53,7 +55,6 @@ search: function(req,res) {
                     include:[{association: 'owner'}, {association: 'comentarios'}],
                     where: [{color: {[op.like]: '%' + req.query.search + '%'}}] 
                 })
-
 
                     .then(function(zapatillas5){
                         for(let i = 0; i < zapatillas5.length; i++){

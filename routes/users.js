@@ -3,18 +3,12 @@ const express = require('express');
 const router = express.Router(); 
 let usersController = require('../controladores/usersController.js'); 
 
-let multer = require('multer')
-let path = require('path')
+const multer = require('multer'); //requerimos multer en el archivo que procesa la informacion del formulario
+const path = require('path'); //herramientas para trabajar con rutas de archivos y carpetas
 
 
-
-
-
-
-
-
-let storage = multer.diskStorage({  //configuramos de multer la destinacion del archivo que vamos a guardar y el filename.
-    destination : function(req, file, cb) {
+let storage = multer.diskStorage({  //configuramos de multer la destinacion del archivo que vamos a guardar y en filename el nombre como se guardaria.
+    destination : function(req, file, cb) { 
      cb(null, path.join(__dirname, '../public/images/users'))
     },
     filename : function(req, file, cb) {
@@ -27,7 +21,17 @@ let upload = multer({ storage:storage }) //configuramos una variable llamada upl
 //SUFIJOS //router es la variable que almacena la ejecucion y get el metodo http
 router.get('/register', usersController.register );
 router.get('/login', usersController.login)
-router.post('/register', upload.single('image') , usersController.storeProfile)
+router.post('/register', upload.single('imgPerfil') , usersController.storeProfile)
+
+
+
+
+
+
+
+
+
+
 
 
 //router.get('/login', usersController.login); 

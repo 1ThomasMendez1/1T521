@@ -1,36 +1,26 @@
 
-const db = require('../database/models')
-const productos = db.Producto
+const db = require('../database/models') //objeto db del sequelize donde se requieren los modelos
+const productos = db.Producto //de todos los modelos pido uno en especifico (a  traves del alias)
 const users = db.User
 const comments = db.Comment
 const userFollowers = db.UserFollower
-const op = db.Sequelize.Op;
+const op = db.Sequelize.Op; //contiene los operadores para usar operadores de sequelize
 const bcrypt = require('bcryptjs');
 
-const multer = require('multer');
-const path = require('path');
-const { dirname } = require('path');
-const { Console } = require('console')
 
 const usersController = {
     register: function (req,res){
-        if (req.session.user){
-            res.redirect("/index" )
-        }
         return res.render('register');
     },
     login : function(req,res) {
-        if (req.session.user){
             res.redirect("/index" )
-        }
         return res.render('login');
     },
     storeProfile: function (req, res) {
         let info = req.body;
-        let email = users.findOne({ where : [{ email :  info.email}] })
         let errors = {};
-        let filtro1 = {where: [{ email: req.body.email }]}
-        let filtro2 = {where: [{username: req.body.name}]}
+        let filtro1 = {where: [{ email: req.body.email }]} //operador del sequelize que viene en op
+
 
         if (info.name == "") {
             errors.message = "El input de nombre esta vacio";
@@ -77,7 +67,7 @@ const usersController = {
                         username: info.username,
                         password: bcrypt.hashSync(info.password, 10),
                         date: info.date,
-                        image: `/images/users/${info.imgPerfil}`,
+                        image: `/images/users/${req.file.filename}`,
                         created_at: new Date(),
                     }
             
