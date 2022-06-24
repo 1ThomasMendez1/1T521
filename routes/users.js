@@ -3,8 +3,10 @@ const express = require('express');
 const router = express.Router(); 
 let usersController = require('../controladores/usersController'); 
 
+
 const multer = require('multer'); //requerimos multer en el archivo que procesa la informacion del formulario
 const path = require('path'); //herramientas para trabajar con rutas de archivos y carpetas
+const { removeListener } = require('process');
 
 
 let storage = multer.diskStorage({  //configuramos de multer la destinacion del archivo que vamos a guardar y en filename el nombre como se guardaria.
@@ -35,6 +37,9 @@ router.post('/profile', upload.single('image') ,  usersController.editProfile);
 
 
 router.post('/profile/storeFollower', usersController.storeFollower);
+
+router.get('/add', usersController.showProductAdd)
+router.post('/store', upload.single('image'), usersController.store)
 
 
 

@@ -1,54 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <!-- Include Head -->
-<%- include('./partials/head')  %> 
-
+<%- include('./parciales/head') %>
 <body>
-	<!-- Header -->
-	<% if (locals.user != undefined) { %>
-		<%- include('./partials/headerLogueado')  %> 
-<% } else{%>
-		<%- include('./partials/headerNoLogueado')  %> 
-<% } %> 
 	<!-- /Header -->
-
+	<% if(locals.user){ %>
+        <%- include('./parciales/headerLog', {info: locals.user}) %>
+      <% } else {%>
+        <%- include('./parciales/header') %>
+      <% }%>
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Edit product</h2>
+				<h2 class="products-title">Editar productos</h2>
 			</div>
-		<!-- form para add product --> 
-
-		<div class="wrapper fadeInDown">
-			<div id="formContent">
-			  <!-- Tabs Titles -->
-			  <h2 class="active"> Edit <%= product.model  %>   </h2>
-
-			  <!-- Icon -->
-		  
-			  <form action="/products/edit/<%= product.id %>" method="POST" enctype="multipart/form-data">
-				<label for="model" class= "letraForm"> Zapatilla: </label>
-				<input type="text" name="model" placeholder= "name of the product" value=""> 
-				<hr>
-				<label for="description" class= "letraForm"> Descripcion: </label>
-				<input type="text" name="description" placeholder="description">
-				<hr>
-				<label for="photo" class= "letraForm"> Imagen: </label>
-				<input type="file" name="imgProduct" placeholder= "photo" value="">
-				<input name="users_id" value="<%=product.user.id%>" style="display: none">
-				<hr>
-				<input type="submit" class="fadeIn fourth" value="ADD">
-			  </form>
-	
+		</div>
+		<form class="formulario" enctype="multipart/form-data" method="POST" action="/products/update/<%=info.id%>">
+			<div class="label-input">
+				<label for="formGroupExampleInput" class="form-label">Modelo</label>
+				<input name="model" class = "border form-control" type="text" id="formGroupExampleInput" value="<%=info.model%>">
 			</div>
-		  </div>
-			
+
+			<div class="label-input">
+				<label for="formGroupExampleInput" class="form-label">Marca</label>
+				<input name="brand" class = "border form-control" type="text" id="formGroupExampleInput"value="<%=info.brand%>">
+			</div>
+
+			<div class="label-input">
+				<label for="formGroupExampleInput" class="form-label">Año</label>
+				<input name="year" class = "border form-control" type="number" id="formGroupExampleInput"value="<%=info.year%>">
+			</div>
+
+			<div class="label-input">
+				<label for="formGroupExampleInput" class="form-label">Color</label>
+				<input name="color" class = "border form-control" type="text" id="formGroupExampleInput"value="<%=info.color%>">
+			</div>
+
+			<div class="label-input">
+				<label for="formGroupExampleInput" class="form-label">Tamaño</label>
+				<input name="size" class = "border form-control" type="text" id="formGroupExampleInput" placeholder="Numero en pulgadas"value="<%=info.size%>">>
+			</div>
+
+			<div class="label-input">
+				<label for="form-control" id="inputFoto">Foto del Producto</label>
+				<input name="image" type="file" class="form-file"value="<%=info.image%>">
+			</div>
+			<input name="createdAt" class = "border form-control" type="hidden" id="formGroupExampleInput"value="<%=info.createdAt%>">
+			<input name="FkUserId" class = "border form-control" type="hidden" id="formGroupExampleInput"value="<%=info.FkUserId%>">
+
+			<button type="submit" class="btn btn-primary">Editar</button>
+		</form>
+	</div>
 
 
 	<!-- footer -->
-	<%- include('./partials/footer')  %> 
+	<%- include('./parciales/footer') %>
 	<!-- /footer -->
 </body>
 

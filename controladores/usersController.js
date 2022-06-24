@@ -6,7 +6,7 @@ const comments = db.Comment
 const userFollowers = db.UserFollower
 const op = db.Sequelize.Op; //contiene los operadores para usar operadores de sequelize
 const bcrypt = require('bcryptjs');
-
+let data = require('../data/modelos');
 
 const usersController = {
 
@@ -75,31 +75,25 @@ const usersController = {
 
 
         if (info.name == "") {
-            errors.message = "El input de nombre esta vacio";
-            res.locals.errors = errors;
+            res.locals.errors = {message:"Falto nombre"}
             return res.render('register')
 
         } else if (info.email == ""){
-            errors.message = "El input de email esta vacio";
-            res.locals.errors = errors;
+            res.locals.errors = {message:"Falto email"}
             return res.render('register')
 
         }  else if (info.password == ""){
-            errors.message = "El input de password esta vacio";
-            res.locals.errors = errors;
+            res.locals.errors = {message:"Falto contrasena"}
             return res.render('register')
 
         } else if (info.password.length < 3) {
-          errors.message = "El input de password era menor de 3 caracteres"
-          res.locals.errors = errors;
+            res.locals.errors = {message:"La contrasena debe ser mayor a 3 caracteres"}
           return res.render('register')
         } else if (info.date == '') {
-            errors.message = "Fecha de nacimiento por favor"
-            res.locals.errors = errors;
+            res.locals.errors = {message:"Fecha de nacimiento falto"}
             return res.render('register')
         } else if (image == undefined) {
-            errors.message = "Es obligatorio que elija una imagen de perfil"
-            res.locals.errors = errors;
+            res.locals.errors = {message:"Es obligatoria la imagen de perfil"}
             console.log(image)
             return res.render('register')
         }
@@ -108,8 +102,7 @@ const usersController = {
             .then(result => {
                 if (result != undefined){
                     console.log(info)
-                    errors.message = "El mail ya existe";
-                    res.locals.errors = errors;
+                    res.locals.errors = {message:"El mail ya existe"}
                     return res.render('register');
                 } 
 
@@ -292,7 +285,39 @@ const usersController = {
         }
 
         
-    }
+    },
+    showProductAdd: function (req, res) {
+
+        return res.render('product-add', {info: data});
+    },
+    store:function(req,res){
+        var image;
+        if (req.file){
+
+            image = req.file.filename
+
+        } else {
+            image = '/images/products/default-image.jpg'
+        }
+        //res.send (req.body)
+        let zapa = {
+            id: req.params.id,
+            image: `/images/users/${image}`,
+            model: req.body.model,
+            brand: req.body.brand,
+            year: req.body.year,
+            color: req.body.color,
+            size: req.body.size,
+            createdAt: req.body.createdAt,
+            updatedAt: new Date(),
+            FkUserId: req.body.FkUserId,
+        }
+
+        productos.create(zapa)
+        .then(function() {
+            return res.redirect('/index')
+        })
+    },
  }
    
 

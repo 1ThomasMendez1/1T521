@@ -30,18 +30,18 @@ router.post('/storeComment', productsControllers.storeComment);
 
 // Eliminar producto 
 
-router.post('id/:id/delete', productsControllers.deleteProduct)
+router.post('id/:id', productsControllers.deleteProduct)
 
 // Agregar un producto
 
-router.get('/add', productsControllers.showProductAdd)
 
-router.post('/store', upload.single('imgProduct'), productsControllers.store)
+
+//router.post('/store', upload.single('imgProduct'), productsControllers.store)
 
 // Editar producto 
 
-router.get('/edit/:id' , productsControllers.showProductEdit)
+router.get('/edit/:id' , productsControllers.edit)
 
-router.post('/edit/:id', upload.single('imgProduct'), productsControllers.updateProduct)
+router.post('/update/:id', upload.single('image'), productsControllers.update); 
 
 module.exports = router;

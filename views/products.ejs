@@ -20,16 +20,21 @@
 				</div>
 				<p class="product-detail-description">
 					<% if(locals.user && user.id==info.owner.id){ %>
-					<a href="/product/edit/<%=info.id%>">Editar</a>
+					<a href="/products/edit/<%=info.id%>">Editar</a>
 					
-					<a href="/product/delete/<%=info.id%>">Borrar</a>
+					<form class="product-detail-description"
+					action="/products/id/<%= info.id %>" class="editButton"
+					method="POST">
+					<button type="submit" class="editButton"> Borrar </button>
+				</form>
+
 					<% }%>
 				</p>
 			</div>
 			<div class="product-detail">
 				<div class="row">
 					<article class="col-12 col-lg-8 product-detail-info">
-						<img src="/images/products/<%= info.image %> " alt="<%= info.model %>" class="product-detail-img">
+						<img src="<%= info.image %> " alt="<%= info.model %>" class="product-detail-img">
 						<p class="product-detail-description">
 							<%= `Modelo: ${info.model} Marca: ${info.brand} - Año: ${info.year} - Color: ${info.color} - Talle: ${info.size} ` %>
 						</p>

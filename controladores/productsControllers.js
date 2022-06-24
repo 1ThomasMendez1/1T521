@@ -5,17 +5,18 @@ const productos = db.Producto
 const op = db.Sequelize.Op
 const comments = db.Comment
 const users = db.User
+let data = require('../data/modelos');
 
 const productsControllers = {
     show: function (req,res){
         db.Producto.findOne({
                where: [{id: req.params.id}],
                include: [{association: 'owner'}, {association: 'comentarios'}],
-               //order: ['comentarios', 'order', 'desc']
            })
          
                .then(function(unProducto){
                    let comentarios = [];
+                   
                    //return res.send(unProducto.comentarios)
                    for(let i = 0; i < unProducto.comentarios.length; i++){
                        comentarios.push(unProducto.comentarios[i])
@@ -50,54 +51,6 @@ const productsControllers = {
                })
            //return res.render('product', {info: data, array: array, id: req.params.id});
        },
-  
-    showProductAdd: function (req, res) {
-
-
-        idProducto = req.params.id //almaceno el id que viene con la url
-        idUsuario = req.session.user.id //almaceno el id del usuario que esta logeado
-        datosProducto = req.body //extraigo los datos del form
-
-        if (req.file == undefined) { //en el caso de que el usuario no haya guardado foto
-            fotoProducto = null
-        } else {
-            fotoProducto = req.file.filename; //llamo fotoProducto al nombre del archivo subido por el usuario
-        }
-        db.Producto.create({ //creo el nuevo registro en la tabla de productos
-            nombreProducto: datosProducto.nombreProducto,
-            imagen: fotoProducto,
-            descripcion: datosProducto.descripcion,
-            idUsuario: idUsuario
-        })
-        .then ((result) =>{
-            res.redirect("/profile/" + idUsuario)
-        })
-            
-        //image es el nombre del campo del formulario que carga la imagen
-        //para que venga el req.file primero le pusimos al formulario el enctype="multipart/form-data" 
-        //en req.file hay muchas propiedades y la mas importante es el path que tiene la ruta completa en donde esta el archivo
-        //el path lo aclaramos nosotoros en la carpeta destin   ation en la ruta   
-    },
-
-    store: (req, res) => {
-        let info = req.body;
-        let imgProduct = req.file.filename;
-        let zapas = {
-            photo: imgProduct,
-            model: info.model,
-            description: info.description,
-            users_id: req.session.user.id
-        };
-
-
-        product.create(zapas)
-            .then((result) => {
-                return res.redirect('/')
-            }).catch((err) => {
-                return res.send('Hay un error' + err)
-            });
-
-    },
     showProductEdit: (req, res) => {
         let id = req.params.id;
         let filtro = {
@@ -112,40 +65,6 @@ const productsControllers = {
             console.log(err);
         });
     },
-    updateProduct: (req, res) => {
-            let info = req.body;
-            let imgProduct = req.file.filename;
-            let zapas = {
-                photo: imgProduct,
-                model: info.model,
-                description: info.description,
-                users_id: info.users_id
-            }
-    
-            let filtro = {
-                where: {
-                    id: req.params.id
-                }
-            };
-
-            if(req.session.user.id == zapas.users_id) {
-            product.update(zapas, filtro)
-            .then((result) => {
-                console.log(zapas.users_id);
-                console.log(zapas.users_id);
-                return res.redirect('/')
-            }).catch((err) => {
-                console.log(err);
-            });
-            }
-            else {
-                console.log(zapas.users_id);
-                console.log(zapas.users_id);
-                return res.redirect('/profile/login')
-            }
-    
-        
-    },
     deleteProduct: (req, res) => {
         let id = req.params.id
         let info = req.body
@@ -153,7 +72,7 @@ const productsControllers = {
             users_id : info.users_id
         }
         if (req.session.user.id == zapas.users_id) {
-            product.destroy({
+            productos.destroy({
                 where: {
                     id: id
                 }
@@ -233,7 +152,47 @@ const productsControllers = {
                 })
             })
         })}
-    }
+    },
+    edit:function(req,res){
+        productos.findByPk(req.params.id)
+        .then(productos=>{
+
+            res.render("product-edit",{
+                info:productos
+            })
+        })
+        
+    },
+    update:function(req,res){
+        var image;
+        if (req.file){
+           
+            image = req.file.filename
+
+        } else {
+
+            image = '/images/products/default-image.jpg'
+        }
+        //res.send (req.body)
+        let zapa = {
+            id: req.params.id,
+            image: `/images/products/${image}`,
+            model: req.body.model,
+            brand: req.body.brand,
+            year: req.body.year,
+            color: req.body.color,
+            size: req.body.size,
+            createdAt: req.body.createdAt,
+            updatedAt: new Date(),
+            FkUserId: req.body.FkUserId,
+        }
+       
+        productos.update(zapa,{where:{id:req.params.id}})
+        .then(function() {
+            return res.redirect('/products/'+req.params.id)
+        })
+    },
+
 
 };
 

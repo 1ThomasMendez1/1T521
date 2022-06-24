@@ -6,7 +6,6 @@
 <body>
 	<!-- Header -->
 	<% if(locals.user){ %>
-	<% console.log('cccc' + locals.user.username) %>
 	<%- include('./parciales/headerLog', {info: locals.user}) %>
 	<% } else {%>
 	<%- include('./parciales/header') %>
@@ -24,26 +23,35 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title"> <%= info.usuario.username %>
-						<% if (locals.user.id == info.usuario.id) { %>
-						<% if(locals.user){ %>
-						<a href="/users/profile-edit/<%=locals.user.id%>">
-							<i class="fas fa-cog"></i>
-						</a>
-						<% } %>
-						<% } else { %>
-						<form action="storeFollower" method="post">
-							<input type="hidden" name="usuarioSeguido" value="<%= id %>">
-							<input type="hidden" name="usuarioSeguidor" value="<%=locals.user.id%>">
-							<% if(info.yaSigue == null) { %>
-							<button class="btn mt-3 ml-4">FOLLOW</button>
-							<input type="hidden" name="seguido" value="<%=1%>">
-							<%} else { %>
-							<button class="btn mt-3 ml-4">UNFOLLOW</button>
-							<input type="hidden" name="seguido" value="<%=0%>">
-							<% } %>
-						</form>
 
-						<% }%>
+
+						<%	if (locals.user != undefined) { %>
+
+							<% if (locals.user.id == info.usuario.id) { %>
+								<% if(locals.user){ %>
+								<a href="/users/profile-edit/<%=locals.user.id%>">
+									<i class="fas fa-cog"></i>
+								</a>
+								<% } %>
+								<% } else { %>
+								<form action="storeFollower" method="post">
+									<input type="hidden" name="usuarioSeguido" value="<%= id %>">
+									<input type="hidden" name="usuarioSeguidor" value="<%=locals.user.id%>">
+									<% if(info.yaSigue == null) { %>
+									<button class="btn mt-3 ml-4">FOLLOW</button>
+									<input type="hidden" name="seguido" value="<%=1%>">
+									<%} else { %>
+									<button class="btn mt-3 ml-4">UNFOLLOW</button>
+									<input type="hidden" name="seguido" value="<%=0%>">
+									<% } %>
+								</form>
+		
+								<% }%>
+
+					<% } %> 	
+						
+
+
 					</h1>		
 				</div>
 
@@ -77,7 +85,7 @@
 				<section class="product-box">
 					<a href="/products/<%= info.productos[i].id %>">
 						<figure class="product-box_image">
-							<img src="/images/products/<%= info.productos[i].image %>"
+							<img src="<%= info.productos[i].image %>"
 								alt="<%= info.productos[i].model %>">
 						</figure>
 						<article class="product-box_data">

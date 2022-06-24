@@ -65,19 +65,14 @@ VALUES
 ('maxiromero@gmail.com', 'romerito', 'romegol', '2001-10-15','/images/users/1.jpg', curdate());
 
 INSERT INTO productos (image, model, brand, year, color, size, createdAt, FkUserId)
-VALUES ('midBlazer.webp', 'Air jordan', 'Nike', 2001, 'azul', 5.1, curdate(), 1),
-('airJordanDNA.jpg', 'Air force', 'Adidas', 2024, 'rojo', 6.3, curdate(), 2),
-('midBlazer.webp', 'Croc', 'Telefonica', 2027, 'violeta', 6.2, curdate(), 1),
-('midBlazer.webp', 'Superfly', 'Telefonica', 2027, 'negro', 6.2, curdate(), 1),
-('yeezyBoost.jpg', 'Mid Blazer', 'Telefonica', 2027, 'blanco', 6.2, curdate(), 1),
-('yeezyBoost700', 'Yeezy Boost 700', 'Telefonica', 2027, 'rojo', 6.2, curdate(), 1),
-('superfly.jpg', 'Adiddas Ozweego', 'Telefonica', 2027, 'azul', 6.2, curdate(), 1),
-('ozweegoAdiddas.webp', 'Air Jordan 1', 'Telefonica', 2027, 'marron', 6.2, curdate(), 1),
-('midBlazer.webp', 'Air Jordan DNA', 'Telefonica', 2027, 'negro', 6.2, curdate(), 1),
-('airJordanXXXI.jpg', 'Mid Blazer ', 'Telefonica', 2027, 'rosa', 6.2, curdate(), 1),
-('airJordanDNA.jpg', 'Superfly', 'Telefonica', 2027, 'verde', 6.2, curdate(), 1),
-('airJordan1-1986.jpg', 'Air Jordan 1', 'Telefonica', 2027, 'rojo', 6.2, curdate(), 1),
-('yeezyBoost.jpg', 'Yeezy Boost', 'Telefonica', 2027, 'azul', 6.2, curdate(), 1);
+VALUES ('/images/products/midBlazer.webp', 'Air jordan', 'Nike', 2001, 'azul', 5.1, curdate(), 1),
+('/images/products/airJordanDNA.jpg', 'Air force', 'Adidas', 2024, 'rojo', 6.3, curdate(), 2),
+('/images/products/midBlazer.webp', 'Croc', 'Telefonica', 2027, 'violeta', 6.2, curdate(), 1),
+('/images/products/midBlazer.webp', 'Superfly', 'Telefonica', 2027, 'negro', 6.2, curdate(), 1),
+('/images/products/ozweegoAdiddas.webp', 'Air Jordan 1', 'Telefonica', 2027, 'marron', 6.2, curdate(), 1),
+(/images/products/'midBlazer.webp', 'Air Jordan DNA', 'Telefonica', 2027, 'negro', 6.2, curdate(), 1),
+('/images/products/airJordanDNA.jpg', 'Superfly', 'Telefonica', 2027, 'verde', 6.2, curdate(), 1),
+('/images/products/airJordan1-1986.jpg', 'Air Jordan 1', 'Telefonica', 2027, 'rojo', 6.2, curdate(), 1),
 
 
 INSERT INTO comments (text,rating,FkProductoId,FkUserId,createdAt)
@@ -94,4 +89,4 @@ VALUES(1,2),
 (3,1),
 (1,3);
 
-    
+
