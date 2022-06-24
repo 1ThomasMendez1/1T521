@@ -24,20 +24,14 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title"> <%= info.usuario.username %>
-						<% if (locals.user != undefined) { %> <!--El usuario esta logeado-->
-						
-							<% if (locals.user.id == info.usuario.id) { %> <!--El usuario esta mirando su propio perfil-->
-								<a href="/index/profileEdit/<%= info.usuario.id %>">
-									<i class="fas fa-cog"></i>
-								</a>
-							<% } %>
+						<% if (locals.user.id == info.usuario.id) { %>
+						<% if(locals.user){ %>
+						<a href="/users/profile-edit/<%=locals.user.id%>">
+							<i class="fas fa-cog"></i>
+						</a>
 						<% } %>
-					</h1>
-					
-					<% if (locals.user == undefined) { %> <!--Si el usuario no esta logeado-->
-					<% } else {%> <!--En caso de que este logeado-->
-						<% if (locals.user.id != info.usuario.id) { %> <!--El usuario logeado no esta viendo su propio perfil-->
-					<form action='/users/profile/<%= info.usuario.id %>' method="post">
+						<% } else { %>
+						<form action="storeFollower" method="post">
 							<input type="hidden" name="usuarioSeguido" value="<%= id %>">
 							<input type="hidden" name="usuarioSeguidor" value="<%=locals.user.id%>">
 							<% if(info.yaSigue == null) { %>
@@ -49,8 +43,8 @@
 							<% } %>
 						</form>
 
-						<% } %>
-					<% } %> 		
+						<% }%>
+					</h1>		
 				</div>
 
 				</div>

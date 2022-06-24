@@ -32,30 +32,11 @@ router.post('/profile', upload.single('image') ,  usersController.editProfile);
 router.get('/profile-edit/:id', usersController.edit);
 
 
-router.post('/storeFollower', usersController.storeFollower);
+
+router.post('/profile/storeFollower', usersController.storeFollower);
 
 
-//router.get('/login', usersController.login); 
-/////router.post('/login', usersController.procesarLogin); 
-
-//router.get('/profile-edit', );
-//router.get('/product-add', )
-
-//SUFIJOS
-
-//router.get('/register', usersController.register);  //router es la variable que almacena la ejecucion y get el metodo http
-////router.post('/register', usersController.procesarRegister);
-//router.get('/login', usersController.login);
-//router.post('/login',usersController.procesarLogin);
-
-
-// (path)dentro del parentesis encontramos un string y hace referencia a la ruta en si misma (url que llega por peticion)
-//router.get('/', usersController.profile);
-///router.get('/profile-edit', usersController.profileEdit);
-//router.get('/product-add', usersController.productAdd)
 
 
 module.exports = router;  
 
-//se encarga de direccionarte a algun lado segun a donde desees llegar
-// (path)dentro del parentesis encontramos un string y hace referencia a la ruta en si misma (url que llega por peticion)
