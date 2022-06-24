@@ -86,6 +86,7 @@ search: function(req,res) {
  info: result  })
     })
 }, 
+
 }
 
 module.exports = indexController

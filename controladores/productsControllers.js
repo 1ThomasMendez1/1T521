@@ -52,7 +52,31 @@ const productsControllers = {
        },
   
     showProductAdd: function (req, res) {
-        return res.render('product-add')
+
+
+        idProducto = req.params.id //almaceno el id que viene con la url
+        idUsuario = req.session.user.id //almaceno el id del usuario que esta logeado
+        datosProducto = req.body //extraigo los datos del form
+
+        if (req.file == undefined) { //en el caso de que el usuario no haya guardado foto
+            fotoProducto = null
+        } else {
+            fotoProducto = req.file.filename; //llamo fotoProducto al nombre del archivo subido por el usuario
+        }
+        db.Producto.create({ //creo el nuevo registro en la tabla de productos
+            nombreProducto: datosProducto.nombreProducto,
+            imagen: fotoProducto,
+            descripcion: datosProducto.descripcion,
+            idUsuario: idUsuario
+        })
+        .then ((result) =>{
+            res.redirect("/profile/" + idUsuario)
+        })
+            
+        //image es el nombre del campo del formulario que carga la imagen
+        //para que venga el req.file primero le pusimos al formulario el enctype="multipart/form-data" 
+        //en req.file hay muchas propiedades y la mas importante es el path que tiene la ruta completa en donde esta el archivo
+        //el path lo aclaramos nosotoros en la carpeta destin   ation en la ruta   
     },
 
     store: (req, res) => {

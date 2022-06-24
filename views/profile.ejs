@@ -10,6 +10,7 @@
 	<%- include('./parciales/headerLog', {info: locals.user}) %>
 	<% } else {%>
 	<%- include('./parciales/header') %>
+	<h1>Para seguir a un usuario necesitas estar logueado</h1>
 	<% }%>
 	<!-- /Header -->
 
@@ -36,9 +37,18 @@
 					<% if (locals.user == undefined) { %> <!--Si el usuario no esta logeado-->
 					<% } else {%> <!--En caso de que este logeado-->
 						<% if (locals.user.id != info.usuario.id) { %> <!--El usuario logeado no esta viendo su propio perfil-->
-							<form action="/seguir/<%= info.usuario.id %>" method="POST"> 
-								<button class="btn mt-3 ml-4" type="submit">Seguir</a>
-							</form>
+					<form action='/users/profile/<%= info.usuario.id %>' method="post">
+							<input type="hidden" name="usuarioSeguido" value="<%= id %>">
+							<input type="hidden" name="usuarioSeguidor" value="<%=locals.user.id%>">
+							<% if(info.yaSigue == null) { %>
+							<button class="btn mt-3 ml-4">FOLLOW</button>
+							<input type="hidden" name="seguido" value="<%=1%>">
+							<%} else { %>
+							<button class="btn mt-3 ml-4">UNFOLLOW</button>
+							<input type="hidden" name="seguido" value="<%=0%>">
+							<% } %>
+						</form>
+
 						<% } %>
 					<% } %> 		
 				</div>

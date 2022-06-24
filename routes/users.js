@@ -29,7 +29,8 @@ router.post('/logout' , usersController.logout);
 
 router.get('/profile/:id', usersController.perfil);
 
-router.post('')
+router.post('/storeFollower', usersController.storeFollower);
+
 
 
 //router.get('/profile-edit', );
