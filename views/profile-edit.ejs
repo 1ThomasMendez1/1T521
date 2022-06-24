@@ -17,40 +17,36 @@
 				</div>
 				<!-- Show the "ultimos" products -->
 				<h2 class="col-12">
-					<form action="" method="get">
+					<form action="/profileEdit/<%= info.id %>" method="POST" enctype="multipart/form-data">
 						<article class="email">
 							<label for="email">Email:</label>
-							<input placeholder="<%=usuario.email%>" type="email" name="email">
+							<input placeholder="<%=info.email%>" type="email" name="email">
 						</article>
 
 						<article class="usuario">
 							<label for="usuario">Nombre de usuario:</label>
-							<input placeholder="<%=usuario.usuario%>" type="text" name="usuario">
+							<input placeholder="<%=info.username%>" type="text" name="usuario">
 						</article>
 
 						<article class="contraseña">
 							<label for="contraseña">Contraseña:</label>
-							<input placeholder="<%=usuario.contraseña%>" type="contraseña" name="">
+							<input placeholder="<%=info.password%>" type="contraseña" name="">
 						</article>
 
 						<article class="nacimiento">
 							<label for="fecha">Fecha de nacimiento:</label>
-							<input placeholder="<%=usuario.fechaDeNacimiento%>" type="number" name="fechaNacimiento">
+							<input placeholder="<%=info.date%>" type="number" name="fechaNacimiento">
 						</article>
 
-						<article class="documento">
-							<label for="documento">Numero de documento:</label>
-							<input placeholder="<%=usuario.nroDeDocumento%>" type="number" name="nroDocumento">
-						</article>
 
 						<article class="foto">
 							<label for="foto">Foto de perfil:</label> <input
 								accept="image/jpg, image/jpeg, image/png, image/webp, image/JPG, image/JPEG, image/PNG, image/WEBP"
-								type="file" multiple="" autocomplete="off" value="<%=usuario.fotoDePerfil%>" name="fotoperfil">
+								type="file" multiple="" autocomplete="off" value="<%=info.image%>" name="imgPerfil">
 								</article>
 
-							<label for="enviar">Ingresar a mi usuario</label>
-							<input class="form-input " type="submit" value="Enviar">
+								<button class="form-input" type="submit">Guardar cambios</button>	
+							
 
 						</article>
 					</form>

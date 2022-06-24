@@ -132,44 +132,90 @@ const usersController = {
         }
     },
     perfil: function (req,res){
-        let info = {
-            usuario: null,
-            productos: null,
-            comentarios: null
-        };
-        users.findOne({
-            where: [{id: req.params.id}]
-        })
-        .then(function(usuario){
-            comments.findAll({
-                where: [{FkUserId: req.params.id}]
+       
+        if (res.locals.user) {
+            let info = {
+                usuario: null,
+                productos: null,
+                comentarios: null
+            };
+            users.findOne({
+                where: [{id: req.params.id}]
             })
-            .then(function(comentarios){
-                productos.findAll({
+            .then(function(usuario){
+                comments.findAll({
                     where: [{FkUserId: req.params.id}]
-
                 })
-                .then(function(zapas){
-                    userFollowers.findAll({
+                .then(function(comentarios){
+                    productos.findAll({
                         where: [{FkUserId: req.params.id}]
+    
                     })
-                    .then(function(seguidores){
-                        userFollowers.findOne({
-                            where: [{FkUserId: req.params.id},{FkFollowerId: res.locals.user.id}] 
+                    .then(function(zapas){
+                        userFollowers.findAll({
+                            where: [{FkUserId: req.params.id}]
                         })
-                        .then(function(yaSigue){
-                            info.productos = zapas;
-                            info.usuario = usuario;
-                            info.comentarios = comentarios;
-                            info.seguidores = seguidores; 
-                            info.yaSigue = yaSigue;
-                            //return res.send(info);
-                            return res.render('profile', {info: info, id: req.params.id});//datos de un usuario y todos sus telefonos
+                        .then(function(seguidores){
+                            userFollowers.findOne({
+                                where: [{FkUserId: req.params.id},{FkFollowerId: res.locals.user.id}] 
+                            })
+                            .then(function(yaSigue){
+                                info.productos = zapas;
+                                info.usuario = usuario;
+                                info.comentarios = comentarios;
+                                info.seguidores = seguidores; 
+                                info.yaSigue = yaSigue;
+                                //return res.send(info);
+                                return res.render('profile', {info: info, id: req.params.id});//datos de un usuario y todos sus telefonos
+                            })
                         })
                     })
                 })
             })
-        })
+        } else {
+ 
+            let info = {
+                usuario: null,
+                productos: null,
+                comentarios: null
+            };
+            users.findOne({
+                where: [{id: req.params.id}]
+            })
+            .then(function(usuario){
+                comments.findAll({
+                    where: [{FkUserId: req.params.id}]
+                })
+                .then(function(comentarios){
+                    productos.findAll({
+                        where: [{FkUserId: req.params.id}]
+    
+                    })
+                    .then(function(zapas){
+                        userFollowers.findAll({
+                            where: [{FkUserId: req.params.id}]
+                        })
+                        .then(function(seguidores){
+                            userFollowers.findOne({
+                                where: [{FkUserId: req.params.id}] 
+                            })
+                            .then(function(yaSigue){
+                                info.productos = zapas;
+                                info.usuario = usuario;
+                                info.comentarios = comentarios;
+                                info.seguidores = seguidores; 
+                                info.yaSigue = yaSigue;
+                                //return res.send(info);
+                                return res.render('profile', {info: info, id: req.params.id});//datos de un usuario y todos sus telefonos
+                            })
+                        })
+                    })
+                })
+            })
+        }
+
+
+      
 
     },
  }
