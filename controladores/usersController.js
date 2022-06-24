@@ -166,7 +166,7 @@ const usersController = {
                                 info.seguidores = seguidores; 
                                 info.yaSigue = yaSigue;
                                 //return res.send(info);
-                                return res.render('profile', {info: info, id: req.params.id});//datos de un usuario y todos sus telefonos
+                                return res.render('profile', {info: info, id: req.params.id});//datos de un usuario y todos sus zapatillas
                             })
                         })
                     })
@@ -206,7 +206,7 @@ const usersController = {
                                 info.seguidores = seguidores; 
                                 info.yaSigue = yaSigue;
                                 //return res.send(info);
-                                return res.render('profile', {info: info, id: req.params.id});//datos de un usuario y todos sus telefonos
+                                return res.render('profile', {info: info, id: req.params.id});//datos de un usuario y todos sus zapatillas
                             })
                         })
                     })

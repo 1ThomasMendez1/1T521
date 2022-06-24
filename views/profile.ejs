@@ -24,13 +24,6 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title"> <%= info.usuario.username %>
-<<<<<<< HEAD
-						<% if (locals.user.id == info.usuario.id) { %>
-						<% if(locals.user){ %>
-						<a href="/users/profile-edit/<%=locals.user.id%>">
-							<i class="fas fa-cog"></i>
-						</a>
-=======
 						<% if (locals.user != undefined) { %> <!--El usuario esta logeado-->
 						
 							<% if (locals.user.id == info.usuario.id) { %> <!--El usuario esta mirando su propio perfil-->
@@ -38,7 +31,6 @@
 									<i class="fas fa-cog"></i>
 								</a>
 							<% } %>
->>>>>>> 55d3e6e857af004ed21e1acec94f7a7e13b00c03
 						<% } %>
 					</h1>
 					
