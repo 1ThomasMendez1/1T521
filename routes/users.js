@@ -28,8 +28,9 @@ router.post('/login' , usersController.procesarLogin);
 router.post('/logout' , usersController.logout);
 
 router.get('/profile/:id', usersController.perfil);
-router.post('/profile', upload.single('image') ,  usersController.editProfile);
+
 router.get('/profile-edit/:id', usersController.edit);
+router.post('/profile', upload.single('image') ,  usersController.editProfile);
 
 
 

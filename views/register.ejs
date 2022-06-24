@@ -14,7 +14,7 @@
 		<main>
 
     
-			<% if(locals.errors){ %>
+			<% if(locals.errors.message){ %>
 			  <p class="error" style="color: red;"> <%= locals.errors.message %>
 			  </p>
 		  <% } %>
@@ -42,7 +42,8 @@
 					<article class="article-login">
 					  <input id="imgPerfil" class="input" type="file" name="imgPerfil"/>
 					</article>
-					<button type="place-holder" class="submit">Enviar</button>
+					<button type="place-holder" class="submit"> Enviar </button>
+
 				  </form>
 		
 			  </section>
