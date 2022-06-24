@@ -70,9 +70,9 @@ VALUES ('/images/products/midBlazer.webp', 'Air jordan', 'Nike', 2001, 'azul', 5
 ('/images/products/midBlazer.webp', 'Croc', 'Telefonica', 2027, 'violeta', 6.2, curdate(), 1),
 ('/images/products/midBlazer.webp', 'Superfly', 'Telefonica', 2027, 'negro', 6.2, curdate(), 1),
 ('/images/products/ozweegoAdiddas.webp', 'Air Jordan 1', 'Telefonica', 2027, 'marron', 6.2, curdate(), 1),
-(/images/products/'midBlazer.webp', 'Air Jordan DNA', 'Telefonica', 2027, 'negro', 6.2, curdate(), 1),
+('/images/products/midBlazer.webp', 'Air Jordan DNA', 'Telefonica', 2027, 'negro', 6.2, curdate(), 1),
 ('/images/products/airJordanDNA.jpg', 'Superfly', 'Telefonica', 2027, 'verde', 6.2, curdate(), 1),
-('/images/products/airJordan1-1986.jpg', 'Air Jordan 1', 'Telefonica', 2027, 'rojo', 6.2, curdate(), 1),
+('/images/products/airJordan1-1986.jpg', 'Air Jordan 1', 'Telefonica', 2027, 'rojo', 6.2, curdate(), 1);
 
 
 INSERT INTO comments (text,rating,FkProductoId,FkUserId,createdAt)
@@ -88,5 +88,4 @@ VALUES(1,2),
 (3,3),
 (3,1),
 (1,3);
-
 
