@@ -132,44 +132,90 @@ const usersController = {
         }
     },
     perfil: function (req,res){
-        let info = {
-            usuario: null,
-            productos: null,
-            comentarios: null
-        };
-        users.findOne({
-            where: [{id: req.params.id}]
-        })
-        .then(function(usuario){
-            comments.findAll({
-                where: [{FkUserId: req.params.id}]
+       
+        if (res.locals.user) {
+            let info = {
+                usuario: null,
+                productos: null,
+                comentarios: null
+            };
+            users.findOne({
+                where: [{id: req.params.id}]
             })
-            .then(function(comentarios){
-                productos.findAll({
+            .then(function(usuario){
+                comments.findAll({
                     where: [{FkUserId: req.params.id}]
-
                 })
-                .then(function(zapas){
-                    userFollowers.findAll({
+                .then(function(comentarios){
+                    productos.findAll({
                         where: [{FkUserId: req.params.id}]
+    
                     })
-                    .then(function(seguidores){
-                        userFollowers.findOne({
-                            where: [{FkUserId: req.params.id},{FkFollowerId: res.locals.user.id}] 
+                    .then(function(zapas){
+                        userFollowers.findAll({
+                            where: [{FkUserId: req.params.id}]
                         })
-                        .then(function(yaSigue){
-                            info.productos = zapas;
-                            info.usuario = usuario;
-                            info.comentarios = comentarios;
-                            info.seguidores = seguidores; 
-                            info.yaSigue = yaSigue;
-                            //return res.send(info);
-                            return res.render('profile', {info: info, id: req.params.id});//datos de un usuario y todos sus telefonos
+                        .then(function(seguidores){
+                            userFollowers.findOne({
+                                where: [{FkUserId: req.params.id},{FkFollowerId: res.locals.user.id}] 
+                            })
+                            .then(function(yaSigue){
+                                info.productos = zapas;
+                                info.usuario = usuario;
+                                info.comentarios = comentarios;
+                                info.seguidores = seguidores; 
+                                info.yaSigue = yaSigue;
+                                //return res.send(info);
+                                return res.render('profile', {info: info, id: req.params.id});//datos de un usuario y todos sus telefonos
+                            })
                         })
                     })
                 })
             })
-        })
+        } else {
+ 
+            let info = {
+                usuario: null,
+                productos: null,
+                comentarios: null
+            };
+            users.findOne({
+                where: [{id: req.params.id}]
+            })
+            .then(function(usuario){
+                comments.findAll({
+                    where: [{FkUserId: req.params.id}]
+                })
+                .then(function(comentarios){
+                    productos.findAll({
+                        where: [{FkUserId: req.params.id}]
+    
+                    })
+                    .then(function(zapas){
+                        userFollowers.findAll({
+                            where: [{FkUserId: req.params.id}]
+                        })
+                        .then(function(seguidores){
+                            userFollowers.findOne({
+                                where: [{FkUserId: req.params.id}] 
+                            })
+                            .then(function(yaSigue){
+                                info.productos = zapas;
+                                info.usuario = usuario;
+                                info.comentarios = comentarios;
+                                info.seguidores = seguidores; 
+                                info.yaSigue = yaSigue;
+                                //return res.send(info);
+                                return res.render('profile', {info: info, id: req.params.id});//datos de un usuario y todos sus telefonos
+                            })
+                        })
+                    })
+                })
+            })
+        }
+
+
+      
 
     },
 
@@ -221,6 +267,31 @@ const usersController = {
             })
             .catch(error => console.log (error))
     },
+    storeFollower:function (req, res) {
+        //res.send(req.body)
+        let follower = {
+            FkUserId:req.body.usuarioSeguido,
+            FkFollowerId: req.body.usuarioSeguidor
+        }
+        if(req.body.seguido == 1) {
+            userFollowers.create(follower)
+            .then(function(respuesta){  //en el parametro recibimos el registro que se acaba de crear en la base de datos
+                // return res.send(respuesta)
+                return res.redirect('/profile/' + req.body.usuarioSeguido); //redirigir falta ponerle el id del usuario en cuestion -> session
+            })
+        }
+        if(req.body.seguido == 0) {
+            userFollowers.destroy({
+                where: [{FkUserId: req.body.usuarioSeguido,},{FkFollowerId: req.body.usuarioSeguidor}] 
+            })
+            .then(function(respuesta){  //en el parametro recibimos el registro que se acaba de crear en la base de datos
+                // return res.send(respuesta)
+                return res.redirect('/profile/' + req.body.usuarioSeguido); //redirigir falta ponerle el id del usuario en cuestion -> session
+            })
+        }
+
+        
+    }
  }
    
 

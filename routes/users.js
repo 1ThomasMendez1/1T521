@@ -32,6 +32,8 @@ router.post('/profile', upload.single('image') ,  usersController.editProfile);
 router.get('/profile-edit/:id', usersController.edit);
 
 
+router.post('/storeFollower', usersController.storeFollower);
+
 
 //router.get('/login', usersController.login); 
 /////router.post('/login', usersController.procesarLogin); 

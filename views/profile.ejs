@@ -10,6 +10,7 @@
 	<%- include('./parciales/headerLog', {info: locals.user}) %>
 	<% } else {%>
 	<%- include('./parciales/header') %>
+	<h1>Para seguir a un usuario necesitas estar logueado</h1>
 	<% }%>
 	<!-- /Header -->
 
@@ -23,14 +24,28 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title"> <%= info.usuario.username %>
+<<<<<<< HEAD
 						<% if (locals.user.id == info.usuario.id) { %>
 						<% if(locals.user){ %>
 						<a href="/users/profile-edit/<%=locals.user.id%>">
 							<i class="fas fa-cog"></i>
 						</a>
+=======
+						<% if (locals.user != undefined) { %> <!--El usuario esta logeado-->
+						
+							<% if (locals.user.id == info.usuario.id) { %> <!--El usuario esta mirando su propio perfil-->
+								<a href="/index/profileEdit/<%= info.usuario.id %>">
+									<i class="fas fa-cog"></i>
+								</a>
+							<% } %>
+>>>>>>> 55d3e6e857af004ed21e1acec94f7a7e13b00c03
 						<% } %>
-						<% } else { %>
-						<form action="storeFollower" method="post">
+					</h1>
+					
+					<% if (locals.user == undefined) { %> <!--Si el usuario no esta logeado-->
+					<% } else {%> <!--En caso de que este logeado-->
+						<% if (locals.user.id != info.usuario.id) { %> <!--El usuario logeado no esta viendo su propio perfil-->
+					<form action='/users/profile/<%= info.usuario.id %>' method="post">
 							<input type="hidden" name="usuarioSeguido" value="<%= id %>">
 							<input type="hidden" name="usuarioSeguidor" value="<%=locals.user.id%>">
 							<% if(info.yaSigue == null) { %>
@@ -42,8 +57,9 @@
 							<% } %>
 						</form>
 
-						<% }%>
-					</h1>
+						<% } %>
+					<% } %> 		
+				</div>
 
 				</div>
 				<div>
@@ -73,7 +89,7 @@
 			<% for(let i =0 ;i < info.productos.length; i++) { %>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/product/<%= info.productos[i].id %>">
+					<a href="/products/<%= info.productos[i].id %>">
 						<figure class="product-box_image">
 							<img src="/images/products/<%= info.productos[i].image %>"
 								alt="<%= info.productos[i].model %>">

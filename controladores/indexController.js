@@ -77,7 +77,16 @@ search: function(req,res) {
            
     .catch(error => console.log('El error: ' + error))
   },
-  
+  profileEdit: (req, res) =>{
+    idUsuario = req.params.id,
+    db.User.findByPk(idUsuario)
+
+    .then((result) =>{
+        return res.render('profile-edit',{
+ info: result  })
+    })
+}, 
+
 }
 
 module.exports = indexController
