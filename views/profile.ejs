@@ -34,9 +34,6 @@
 					</h1>
 					
 					<% if (locals.user == undefined) { %> <!--Si el usuario no esta logeado-->
-						<form action="/seguir/<%= info.usuario.id %>" method="POST"> 
-							<button class="btn mt-3 ml-4" type="submit">Seguir</a>
-						</form>
 					<% } else {%> <!--En caso de que este logeado-->
 						<% if (locals.user.id != info.usuario.id) { %> <!--El usuario logeado no esta viendo su propio perfil-->
 							<form action="/seguir/<%= info.usuario.id %>" method="POST"> 
