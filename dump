@@ -81,11 +81,11 @@ VALUES ('midBlazer.webp', 'Air jordan', 'Nike', 2001, 'azul', 5.1, curdate(), 1)
 
 
 INSERT INTO comments (text,rating,FkProductoId,FkUserId,createdAt)
-VALUES ("Muy bueno",10,1,1,curdate()),
-("No me gusto",1,1,2,curdate()),
-("No cumplio",0.5,1,1,curdate()),
-("Buenardo",2,3,1,curdate()),
-("EPICOOO AMIGO",10,1,3,curdate());
+VALUES ("Muy bueno",0,1,1,curdate()),
+("No me gusto",0,1,2,curdate()),
+("No cumplio",0,1,1,curdate()),
+("Buenardo",0,3,1,curdate()),
+("EPICOOO AMIGO",0,1,3,curdate());
 
 INSERT INTO usersFollowers (FkUserId,FkFollowerId)
 VALUES(1,2),

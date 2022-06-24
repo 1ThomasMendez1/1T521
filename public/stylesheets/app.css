@@ -801,3 +801,18 @@ display: block;
 
 
 }
+
+.userpfpp  {
+  height: 50px;
+  width: 50px;
+}
+
+.username-pfp {
+  height: 100px;
+  width: 100px;
+}
+
+.lol {
+  font-size: 35px;
+  margin-left: 10px;
+}

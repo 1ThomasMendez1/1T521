@@ -37,18 +37,18 @@
 					<div class="col-12 col-lg-4">
 						<section class="comments">
 							<article class="username-pfp">
-								<img class="userpfp" src="<%= info.owner.image %> " alt="foto de perfil de <%= info.owner.username %>">
-								<strong> <a href="/profile/<%= info.owner.id %>"> <%= info.owner.username %>  </a> </strong>
+								<img class="userpfpp" src="<%= info.owner.image %> " alt="foto de perfil de <%= info.owner.username %>">
+								<strong> <a class="lol"href="/users/profile/<%= info.owner.id %>"> <%= info.owner.username %>  </a> </strong>
 							</article>
 
 							<% if(comentadores[0] != undefined) { %> 
 								<p id="titulo-comments"><strong>Comentarios:</strong></p>
 								<% for(let i =0; i< comentadores.length; i++) { %>
 									<article>
-										<a href="/profile/<%= comentadores[i].id %>">	<img src="<%= comentadores[i].image %>  " alt=""> </a>
+										<a href="/users/profile/<%= comentadores[i].id %>">	<img class="usuarioc" src="<%= comentadores[i].image %>  " alt=""> </a>
 										<div class="data">
 											<p class="user">
-											<strong> <a href="/profile/<%=info.comentarios[i].FkUserId%> "> <%= comentadores[i].username %>  </a> </strong>
+											<strong> <a href="/users/profile/<%=info.comentarios[i].FkUserId%> "> <%= comentadores[i].username %>  </a> </strong>
 											<%= info.comentarios[i].text %>
 											</p>
 											<p id = "estrellas-<%=i%> ">
@@ -72,15 +72,19 @@
 								<p id="titulo-comments"><strong>Este producto no tiene comentarios, comenta aca abajo!</strong></p>
 								<% console.log('no hay comentarios') %> 
 							<% } %>	
-
+							<% if(locals.user){ %> 
+								<input type="hidden" name="vuelta" id="estrellas-rating-vuelta" value="-1">
 							<form class="form" action="storeComment" method="POST">
 								<input class="form-input" name="text" type="text" placeholder="Agregar comentario">
 								<input type="hidden" name="rating" id="estrellas-rating-input">
 								<input name="FkUserId" class = "border form-control" type="hidden" id="formGroupExampleInput" value="<%= locals.user.id %>">
-								<input name="FkProductId" class = "border form-control" type="hidden" id="formGroupExampleInput" value="<%= id %>">
+								<input name="FkProductoId" class = "border form-control" type="hidden" id="formGroupExampleInput" value="<%= id %>">
 								<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 							</form>
-							
+		
+						<% }else{ %> 
+							<a  class="buy-now-button"  href="/users/login"> INGRESA A TU CUENTA PARA COMENTAR </a>
+						<% } %> 
 						</section>
 				
 					</main>

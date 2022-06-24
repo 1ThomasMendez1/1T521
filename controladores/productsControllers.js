@@ -1,7 +1,7 @@
 
 const { escapeRegExpChars } = require('ejs/lib/utils');
 const db = require('../database/models');
-
+const productos = db.Producto
 const op = db.Sequelize.Op
 const comments = db.Comment
 const users = db.User
@@ -179,19 +179,15 @@ const productsControllers = {
         console.log(comment)
         comments.create(comment)
         .then(function(){
-            let acumulador = 0;
-            let ratingPromedio = 0;
+
             comments.findAll({
                 where: [{FkProductoId: comment.FkProductoId}]
             })
             .then(function(todos){
-                //res.send(todos);
-                for(let i = 0; i < todos.length; i ++){
-                    acumulador += todos[i].rating;
-                }
-                ratingPromedio = acumulador / todos.length;
-                phones.findOne({
-                    where: [{id: comment.FkPhoneId}]
+    
+                productos.findOne({
+                    where: [{id: comment.FkProductoId}],
+                    order : [['createdAt', 'DESC']]
                 })
                 .then(function(result){
                     let zapatilla = {
@@ -203,13 +199,12 @@ const productsControllers = {
                         color: result.color,
                         size: result.size,
                         FkUserId: result.FkUserId,
-                        promedioRating: ratingPromedio
                     }
-                    db.Product.update(zapatilla, {
+                    productos.update(zapatilla, {
                         where: [{id: comment.FkProductoId}]
                     })
                     .then(function(){
-                        return res.redirect(`/product/${db.Product.id}`);
+                        return res.redirect(`/products/${zapatilla.id}`);
                     })
                 })
             })
