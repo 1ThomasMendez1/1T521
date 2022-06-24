@@ -1,7 +1,7 @@
 
 const express = require('express');
 const router = express.Router(); 
-let usersController = require('../controladores/usersController.js'); 
+let usersController = require('../controladores/usersController'); 
 
 const multer = require('multer'); //requerimos multer en el archivo que procesa la informacion del formulario
 const path = require('path'); //herramientas para trabajar con rutas de archivos y carpetas
@@ -20,7 +20,7 @@ let upload = multer({ storage:storage }) //configuramos una variable llamada upl
 
 //SUFIJOS //router es la variable que almacena la ejecucion y get el metodo http
 router.get('/register', usersController.register );
-
+router.get('/login', usersController.login)
 router.post('/register', upload.single('imgPerfil') , usersController.storeProfile)
 
 router.get('/login', usersController.login);
@@ -28,9 +28,13 @@ router.post('/login' , usersController.procesarLogin);
 router.post('/logout' , usersController.logout);
 
 router.get('/profile/:id', usersController.perfil);
+router.post('/profile', upload.single('image') ,  usersController.editProfile);
+router.get('/profile-edit/:id', usersController.edit);
 
-router.post('')
 
+
+//router.get('/login', usersController.login); 
+/////router.post('/login', usersController.procesarLogin); 
 
 //router.get('/profile-edit', );
 //router.get('/product-add', )

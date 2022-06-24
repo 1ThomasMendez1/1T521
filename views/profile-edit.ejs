@@ -1,65 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- Head -->
-<%- include('parciales/head') %>
-	<!-- Head -->
+<!-- Include Head -->
+<%- include('./parciales/head') %>
+<body>
+	<!-- Header -->
+	<% if(locals.user){ %>
+		<% console.log('cccc' + locals.user.username) %> 
+        <%- include('./parciales/headerLog', {info: locals.user}) %>
+      <% } else {%>
+        <%- include('./partials/header') %>
+      <% }%>
 
-	<body>
-		<!-- Header -->
-		<%- include('parciales/headerLog') %>
-		<!-- /Header -->
+	<!-- Novedades -->
+	<div class="product-edit-section">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="title-edit">Editar Perfil</h2>
+			</div>
+        </div>
+		<form class="profile-edit-form" action="/users/profile <%= info.id %> " enctype="multipart/form-data" method="POST"> 
+            <div class="label-input">
+                <label for="email" class="form-label">Email</label>
+                <input name="email" value="<%=info.email%>" class = "border" type="email" placeholder=" example@email.com" class="email">
+            </div>
+            <div class="label-input">
+                <label for="user" class="form-label">Usuario</label>
+                <input name="username" value="<%=info.username%>"  class = "border" type="text" >
+            </div>
+    
+            <div class="label-input">
+                <label for="form-date" class="form-label">Fecha de nacimiento</label>
+                <input name="date" value="<%=info.date%>" class = "border" type="date" class="form-date">
+            </div>
 
-		<!-- Novedades -->
-		<div class="container products-wrapper">
-			<div class="row">
-				<div class="col-12">
-					<h2 class="products-title">Editar mi perfil</h2>
-				</div>
-				<!-- Show the "ultimos" products -->
-				<h2 class="col-12">
-					<form action="" method="get">
-						<article class="email">
-							<label for="email">Email:</label>
-							<input placeholder="<%=usuario.email%>" type="email" name="email">
-						</article>
+            <div class="label-input">
+                <label for="form-file" class="form-label">Foto</label>
+                <input name="image" value="<%=info.image%> " type="file" class="form-file">
+            </div>
+			<input type="hidden" name="id" value="<%=info.id%>">
+            <input type="hidden" name="createdAt" value="<%=info.createdAt%>">
 
-						<article class="usuario">
-							<label for="usuario">Nombre de usuario:</label>
-							<input placeholder="<%=usuario.usuario%>" type="text" name="usuario">
-						</article>
-
-						<article class="contraseña">
-							<label for="contraseña">Contraseña:</label>
-							<input placeholder="<%=usuario.contraseña%>" type="contraseña" name="">
-						</article>
-
-						<article class="nacimiento">
-							<label for="fecha">Fecha de nacimiento:</label>
-							<input placeholder="<%=usuario.fechaDeNacimiento%>" type="number" name="fechaNacimiento">
-						</article>
-
-						<article class="documento">
-							<label for="documento">Numero de documento:</label>
-							<input placeholder="<%=usuario.nroDeDocumento%>" type="number" name="nroDocumento">
-						</article>
-
-						<article class="foto">
-							<label for="foto">Foto de perfil:</label> <input
-								accept="image/jpg, image/jpeg, image/png, image/webp, image/JPG, image/JPEG, image/PNG, image/WEBP"
-								type="file" multiple="" autocomplete="off" value="<%=usuario.fotoDePerfil%>" name="fotoperfil">
-								</article>
-
-							<label for="enviar">Ingresar a mi usuario</label>
-							<input class="form-input " type="submit" value="Enviar">
-
-						</article>
-					</form>
-				</h2>
-
-
-				<!-- footer -->
-				<%- include('parciales/footer') %>
-				<!-- /footer -->
-	</body>
+            <button type="submit" class="btn btn-primary">Editar</button>
+        </form>
+	</div>
+    
+	<!-- footer -->
+	<%- include('./parciales/footer') %>
+	<!-- /footer -->
+</body>
 
 </html>

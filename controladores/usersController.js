@@ -172,6 +172,55 @@ const usersController = {
         })
 
     },
+
+    edit: function (req,res){
+        if (!req.session.user){
+            res.redirect("/index" )
+        }
+        let id = req.params.id;
+        users.findOne({
+            where: [{id: id}]
+        })
+        .then(function(usuario){
+            //return res.send(usuario);
+            return res.render('profile-edit', {info: usuario});
+        })
+
+    },
+
+    editProfile: (req,res)=>{
+
+      
+        usuarioId = req,params.id;
+
+        if (req.file){
+            console.log(req.body);
+            console.log('el filename es ahora es ' + req.file.filename) //obtener los datos del formulario y armar el objeto literal que quiero guardar
+            image = req.file.filename
+            console.log('entro a la foto');
+        } else {
+            console.log('el filename ahora es vacio') //obtener los datos del formulario y armar el objeto literal que quiero guardar
+            console.log('no entro a la foto, pongo default')
+            image = 'default-image.png'
+        }
+        let user = {
+            email: req.body.email,
+            username:req.body.username,
+            date: req.body.date,
+            image: image,
+        }
+        //pegar datos a bd
+        users.update(user,{
+            where:[{
+                id : usuarioId
+            }]
+        }) 
+            .then(function(respuesta){  //en el parametro recibimos el registro que se acaba de crear en la base de datos
+                //return res.send(req.body.id)
+                res.redirect(`/users/profile/${usuarioId}`); //%20 problema
+            })
+            .catch(error => console.log (error))
+    },
  }
    
 
